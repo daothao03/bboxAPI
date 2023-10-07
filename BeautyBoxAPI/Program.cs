@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    string connectString = builder.Configuration.GetConnectionString("bbox")!; //! ??m b?o r?ng 1 chu?i không r?ng
+    string connectString = builder.Configuration.GetConnectionString("bbox")!; //! dam bao rang 1 chuoi không rong
     options.UseSqlServer(connectString);
 });
 

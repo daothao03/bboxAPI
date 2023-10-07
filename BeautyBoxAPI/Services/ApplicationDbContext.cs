@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BeautyBoxAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BeautyBoxAPI.Services
 {
@@ -8,5 +9,9 @@ namespace BeautyBoxAPI.Services
         {
             
         }
+
+        public DbSet<Contact> Contacts { get; set; }
+
+        public DbSet<Product> Products { get; set; }
     }
 }

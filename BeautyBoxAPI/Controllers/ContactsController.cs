@@ -11,9 +11,21 @@ namespace BeautyBoxAPI.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        private readonly List<string> listSubjects = new List<string>()
+        {
+            "Order Status", "Refund Request", "Job Application", "Other"
+        };
+
         public ContactsController(ApplicationDbContext context)
         {
             this._context = context;
+        }
+
+        //Get all subjects
+        [HttpGet("subjects")]
+        public IActionResult GetSubjects()
+        {
+            return Ok(listSubjects);
         }
 
         //Get all contacts
@@ -42,6 +54,14 @@ namespace BeautyBoxAPI.Controllers
         [HttpPost]
         public IActionResult CreateContact(ContactsDTO contactsDTO)
         {
+            //User submit a contact form, front end application will show a list of accecptable subjects
+            //User submit subject not valid -> server send an error message
+            if (!listSubjects.Contains(contactsDTO.Subject))
+            {
+                ModelState.AddModelError("Subjects", "Please select a valid subjects");
+                return BadRequest(ModelState);
+            }
+
             Contact contact = new Contact()
             {
                 FirstName = contactsDTO.FirstName,
@@ -62,6 +82,12 @@ namespace BeautyBoxAPI.Controllers
         [HttpPut("id")]
         public IActionResult UpdateContact(int id, ContactsDTO contactsDTO)
         {
+            if (!listSubjects.Contains(contactsDTO.Subject))
+            {
+                ModelState.AddModelError("Subjects", "Please select a valid subjects");
+                return BadRequest(ModelState);
+            }
+
             var contact = _context.Contacts.Find(id);
             if(contact == null)
             {

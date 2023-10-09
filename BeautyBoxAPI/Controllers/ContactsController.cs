@@ -2,6 +2,7 @@
 using BeautyBoxAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BeautyBoxAPI.Controllers
 {
@@ -11,20 +12,24 @@ namespace BeautyBoxAPI.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        private readonly List<string> listSubjects = new List<string>()
-        {
-            "Order Status", "Refund Request", "Job Application", "Other"
-        };
+        //private readonly List<string> listSubjects = new List<string>()
+        //{
+        //    "Order Status", "Refund Request", "Job Application", "Other"
+        //};
 
         public ContactsController(ApplicationDbContext context)
         {
             this._context = context;
         }
 
+        // Add Pagination
+
+
         //Get all subjects
         [HttpGet("subjects")]
         public IActionResult GetSubjects()
         {
+            var listSubjects = _context.Subjects.ToList();
             return Ok(listSubjects);
         }
 
@@ -32,7 +37,7 @@ namespace BeautyBoxAPI.Controllers
         [HttpGet]
         public IActionResult GetContacts()
         {
-            var contacts = _context.Contacts.ToList();
+            var contacts = _context.Contacts.Include(contact => contact.Subject).ToList();
             return Ok(contacts);
         }
 
@@ -40,8 +45,10 @@ namespace BeautyBoxAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult GetContact(int id)
         {
-            var contact = _context.Contacts.Find(id);
-
+            //var contact = _context.Contacts.Find(id);
+            var contact = _context.Contacts
+                .Include(contact => contact.Subject) //lấy dữ liệu từ bảng Subjects theo ID 
+                .FirstOrDefault(contact => contact.ID == id);
             if (contact == null)
             {
                 return NotFound();
@@ -56,7 +63,11 @@ namespace BeautyBoxAPI.Controllers
         {
             //User submit a contact form, front end application will show a list of accecptable subjects
             //User submit subject not valid -> server send an error message
-            if (!listSubjects.Contains(contactsDTO.Subject))
+
+            //lấy dữ liệu từ bảng Subjects theo ID 
+            var subject = _context.Subjects.Find(contactsDTO.SubjectID);
+            if (subject == null)
+            //if (!listSubjects.Contains(contactsDTO.Subject))
             {
                 ModelState.AddModelError("Subjects", "Please select a valid subjects");
                 return BadRequest(ModelState);
@@ -68,7 +79,8 @@ namespace BeautyBoxAPI.Controllers
                 LastName = contactsDTO.LastName,
                 Email = contactsDTO.Email,
                 Phone = contactsDTO.Phone ?? "",
-                Subject = contactsDTO.Subject,
+                //Subject = contactsDTO.Subject,
+                Subject = subject,
                 Message = contactsDTO.Message
             };
 
@@ -82,7 +94,9 @@ namespace BeautyBoxAPI.Controllers
         [HttpPut("id")]
         public IActionResult UpdateContact(int id, ContactsDTO contactsDTO)
         {
-            if (!listSubjects.Contains(contactsDTO.Subject))
+            var subject = _context.Subjects.Find(contactsDTO.SubjectID);
+            if (subject == null)
+            //if (!listSubjects.Contains(contactsDTO.Subject))
             {
                 ModelState.AddModelError("Subjects", "Please select a valid subjects");
                 return BadRequest(ModelState);
@@ -98,7 +112,8 @@ namespace BeautyBoxAPI.Controllers
             contact.LastName = contactsDTO.LastName;
             contact.Email = contactsDTO.Email;
             contact.Phone = contactsDTO.Phone ?? "";
-            contact.Subject = contactsDTO.Subject;
+            //contact.Subject = contactsDTO.Subject;
+            contact.Subject = subject;
             contact.Message = contactsDTO.Message;
 
             _context.SaveChanges();
@@ -128,7 +143,8 @@ namespace BeautyBoxAPI.Controllers
             {
                 var contact = new Contact()
                 {
-                    ID = id
+                    ID = id,
+                    Subject = new Subject()
                 };
                 _context.Contacts.Remove(contact);
                 _context.SaveChanges();

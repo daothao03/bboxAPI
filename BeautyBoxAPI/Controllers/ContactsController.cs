@@ -3,6 +3,7 @@ using BeautyBoxAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Mail;
 
 namespace BeautyBoxAPI.Controllers
 {
@@ -22,8 +23,6 @@ namespace BeautyBoxAPI.Controllers
             this._context = context;
         }
 
-        // Add Pagination
-
 
         //Get all subjects
         [HttpGet("subjects")]
@@ -33,12 +32,42 @@ namespace BeautyBoxAPI.Controllers
             return Ok(listSubjects);
         }
 
-        //Get all contacts
+        //Get all contacts + Pagination
         [HttpGet]
-        public IActionResult GetContacts()
+        public IActionResult GetContacts(int? page) //page: trang hiện tại
         {
-            var contacts = _context.Contacts.Include(contact => contact.Subject).ToList();
-            return Ok(contacts);
+            if (page == null || page < 1)
+            {
+                page = 1;
+            }
+
+            int pageSize = 10;
+            int totalPages = 0; //hiển thị các nút phân trang
+
+            decimal countContacts = _context.Contacts.Count();
+            totalPages = (int) Math.Ceiling(countContacts / pageSize); //Số trang 
+
+            var contacts = _context.Contacts
+                .Include(contact => contact.Subject)
+                .OrderByDescending(contact => contact.ID) //Sắp xếp liên hệ mới nhất - cũ nhất
+                .Skip((int) (page - 1) * pageSize)//loại bỏ liên hệ nhất định để gọi đến trang được yêu cầu
+                .Take(pageSize) //Lấy liên hệ tại trang được yêu cầu
+                .ToList();
+
+            // Vì vậy, để cho phép ứng dụng giao diện người dùng hiển thị các nút phân trang, chúng tôi sẽ không chỉ trả về
+
+            //địa chỉ liên hệ được yêu cầu, thay vào đó chúng tôi cần trả về địa chỉ liên hệ được yêu cầu, kích thước trang, tổng số
+
+            //của các trang và cả trang được yêu cầu.
+
+            var returns = new
+            {
+                Contacts = contacts,
+                TotalPages = totalPages,
+                Page = page,
+                PageSize = pageSize
+            };
+            return Ok(returns);
         }
 
         //Get contacts by ID

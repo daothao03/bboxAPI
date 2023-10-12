@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\productsImage\\20231012235539830.webp",
+      "PackagePath": "staticwebassets\\images\\productsImage\\20231012235539830.webp"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.BeautyBoxAPI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.BeautyBoxAPI.props",
+      "PackagePath": "build\\BeautyBoxAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.BeautyBoxAPI.props",
+      "PackagePath": "buildMultiTargeting\\BeautyBoxAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.BeautyBoxAPI.props",
+      "PackagePath": "buildTransitive\\BeautyBoxAPI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

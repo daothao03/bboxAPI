@@ -1,8 +1,10 @@
-﻿using BeautyBoxAPI.Models;
+﻿using Azure;
+using BeautyBoxAPI.Models;
 using BeautyBoxAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BeautyBoxAPI.Controllers
 {
@@ -33,12 +35,13 @@ namespace BeautyBoxAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetProducts(string? search, string? category,
-            int? minPrice, int? maxPrice, string? brand)
+        public IActionResult GetProducts(string? search, string? category,int? minPrice, int? maxPrice, string? brand
+            , string? sort, string? typeSort
+            , int? page)
         {
             IQueryable<Product> query = _context.Products;
 
-            // search functionality
+            // tìm kiếm
             if (search != null)
             {
                 query = query.Where(p => p.Name.Contains(search) || p.Description.Contains(search));
@@ -64,9 +67,107 @@ namespace BeautyBoxAPI.Controllers
                 query = query.Where(p => p.Brand == brand);
             }
 
+            // sắp xếp
+            if (sort == null) sort = "id";
+            if (typeSort == null || typeSort == "asc") typeSort = "desc";
+
+            if (sort.ToLower() == "name")
+            {
+                if (typeSort == "asc")
+                {
+                    query = query.OrderBy(product => product.Name);
+                }
+                else
+                {
+                    query = query.OrderByDescending(product => product.Name);
+                }
+            }
+
+            else if (sort.ToLower() == "category")
+            {
+                if (typeSort == "asc")
+                {
+                    query = query.OrderBy(product => product.Category);
+                }
+                else
+                {
+                    query = query.OrderByDescending(product => product.Category);
+                }
+            }
+
+            else if (sort.ToLower() == "brand")
+            {
+                if (typeSort == "asc")
+                {
+                    query = query.OrderBy(product => product.Brand);
+                }
+                else
+                {
+                    query = query.OrderByDescending(product => product.Brand);
+                }
+            }
+
+            else if (sort.ToLower() == "price")
+            {
+                if (typeSort == "asc")
+                {
+                    query = query.OrderBy(product => product.Price);
+                }
+                else
+                {
+                    query = query.OrderByDescending(product => product.Price);
+                }
+            }
+
+            else if (sort.ToLower() == "date")
+            {
+                if (typeSort == "asc")
+                {
+                    query = query.OrderBy(product => product.CreatedAt);
+                }
+                else
+                {
+                    query = query.OrderByDescending(product => product.CreatedAt);
+                }
+            }
+
+            else
+            {
+                if (typeSort == "asc")
+                {
+                    query = query.OrderBy(product => product.Id);
+                }
+                else
+                {
+                    query = query.OrderByDescending(product => product.Id);
+                }
+            }
+
+            //pagination
+            if (page == null || page < 1)
+            {
+                page = 1;
+            }
+
+            int pageSize = 10;
+            int totalPages = 0; //hiển thị các nút phân trang
+
+            decimal countProducts = query.Count();
+            totalPages = (int)Math.Ceiling(countProducts / pageSize); //Số trang 
+            query = query.Skip((int)(page - 1) * pageSize)//loại bỏ sản phẩm nhất định để gọi đến trang được yêu cầu
+               .Take(pageSize); //Lấy sản phẩm tại trang được yêu cầu;
 
             var products = query.ToList();
-            return Ok(products);
+
+            var returns = new
+            {
+                Products = products,
+                TotalPages = totalPages,
+                Page = page,
+                PageSize = pageSize
+            };
+
+            return Ok(returns);
         }
 
         [HttpGet("id")]

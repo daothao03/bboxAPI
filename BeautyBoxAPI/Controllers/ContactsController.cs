@@ -159,7 +159,7 @@ namespace BeautyBoxAPI.Controllers
 
         //Delete Contact
         [Authorize(Roles = "admin")]
-        [HttpDelete("id")]
+        [HttpDelete("id")] 
         public IActionResult DeleteContact(int id)
         {
             //Method 1: Use 2 query Query 1: Find the contact you want to delete

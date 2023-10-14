@@ -226,7 +226,7 @@ namespace BeautyBoxAPI.Controllers
         [HttpGet("Profile")]
         public IActionResult GetProfile()
         {
-            int id = GetUserId();
+            int id = JwtReader.GetUserId(User);
 
             var user = context.Users.Find(id);
             if (user == null)
@@ -253,7 +253,7 @@ namespace BeautyBoxAPI.Controllers
         [HttpPut("UpdateProfile")]
         public IActionResult UpdateProfile(UserProfileUpdateDTO userProfileUpdateDto)
         {
-            int id = GetUserId();
+            int id = JwtReader.GetUserId(User);
 
             var user = context.Users.Find(id);
             if (user == null)
@@ -290,7 +290,7 @@ namespace BeautyBoxAPI.Controllers
         [HttpPut("UpdatePassword")]
         public IActionResult UpdatePassword([Required, MinLength(8), MaxLength(100)] string password)
         {
-            int id = GetUserId();
+            int id = JwtReader.GetUserId(User);
 
             var user = context.Users.Find(id);
             if (user == null)
@@ -312,33 +312,7 @@ namespace BeautyBoxAPI.Controllers
             return Ok();
         }
 
-        private int GetUserId()
-        {
-            var identity = User.Identity as ClaimsIdentity;
-            if (identity == null)
-            {
-                return 0;
-            }
 
-            var claim = identity.Claims.FirstOrDefault(c => c.Type.ToLower() == "id");
-            if (claim == null)
-            {
-                return 0;
-            }
-
-            int id;
-            try
-            {
-                id = int.Parse(claim.Value);
-            }
-
-            catch (Exception)
-            {
-
-                return 0;
-            }
-            return id;
-        }
 
         //Jwt
         private string CreateJWT(User user)

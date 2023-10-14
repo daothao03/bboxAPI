@@ -1,9 +1,11 @@
 ﻿using BeautyBoxAPI.Models;
 using BeautyBoxAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -23,7 +25,7 @@ namespace BeautyBoxAPI.Controllers
             this.context = context;
         }
 
-
+        //Đăng ký người dùng
         [HttpPost("Register")]
         public IActionResult Register(UserDTO userDto)
         {
@@ -93,7 +95,7 @@ namespace BeautyBoxAPI.Controllers
             }
 
 
-            // verify the password
+            // xác thực mật khẩu
             var passwordHasher = new PasswordHasher<User>();
             var result = passwordHasher.VerifyHashedPassword(new User(), user.Password, password);
             if (result == PasswordVerificationResult.Failed)
@@ -127,6 +129,218 @@ namespace BeautyBoxAPI.Controllers
             return Ok(response);
         }
 
+
+        // ủy quyền người dùng - Add User Authorization
+        //[Authorize]
+        //[HttpGet("AuthorizeAuthenticatedUsers")]
+        //public IActionResult AuthorizeAuthenticatedUsers()
+        //{
+        //    return Ok("You are Authorized");
+        //}
+
+
+        //Người dùng yêu cầu reset password
+        [HttpPost("ForgotPassword")]
+        public IActionResult ForgotPassword(string email)
+        {
+            var user = context.Users.FirstOrDefault(u => u.Email == email);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // kiểm tra người dùng đã yêu cầu đặt lại mật khẩu chưa
+            var oldPwdReset = context.PasswordReset.FirstOrDefault(r => r.Email == email);
+            if (oldPwdReset != null)
+            {
+                // xóa yêu cầu
+                context.Remove(oldPwdReset);
+            }
+
+            // create Password Reset Token
+            string token = Guid.NewGuid().ToString() + "-" + Guid.NewGuid().ToString();
+
+            var pwdReset = new PasswordReset()
+            {
+                Email = email,
+                Token = token,
+                CreatedAt = DateTime.Now
+            };
+
+            context.PasswordReset.Add(pwdReset);
+            context.SaveChanges();
+
+
+            // gửi mã token reset password qua email cho người dùng
+            string emailSubject = "Password Reset" ?? "";
+            string username = user.FirstName + " " + user.LastName;
+            string emailMessage = "Dear " + username + "\n" +
+                "We received your password reset request.\n" +
+                "Please copy the following token and paste it in the Password Reset Form:\n" +
+                token + "\n\n" +
+                "Best Regards\n";
+
+
+            //emailSender.SendEmail(emailSubject, email, username, emailMessage).Wait();
+
+            return Ok();
+        }
+
+        [HttpPost("ResetPassword")]
+        public IActionResult ResetPassword(string token, string password)
+        {
+            var pwdReset = context.PasswordReset.FirstOrDefault(r => r.Token == token);
+            if (pwdReset == null)
+            {
+                ModelState.AddModelError("Token", "Wrong or Expired Token");
+                return BadRequest(ModelState);
+            }
+
+            var user = context.Users.FirstOrDefault(u => u.Email == pwdReset.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError("Token", "Wrong or Expired Token");
+                return BadRequest(ModelState);
+            }
+
+            // encrypt password
+            var passwordHasher = new PasswordHasher<User>();
+            string encryptedPassword = passwordHasher.HashPassword(new User(), password);
+
+
+            // save the new encrypted password
+            user.Password = encryptedPassword;
+
+
+            // delete the token
+            context.PasswordReset.Remove(pwdReset);
+
+
+            context.SaveChanges();
+
+            return Ok();
+        }
+
+        //Methods cho phép người dùng xem profile của mình
+        [Authorize]
+        [HttpGet("Profile")]
+        public IActionResult GetProfile()
+        {
+            int id = GetUserId();
+
+            var user = context.Users.Find(id);
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+
+            var userProfileDTO = new UserProfileDTO()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Phone = user.Phone,
+                Address = user.Address,
+                Role = user.Role,
+                CreatedAt = user.CreatedAt
+            };
+
+            return Ok(userProfileDTO);
+        }
+
+        [Authorize]
+        [HttpPut("UpdateProfile")]
+        public IActionResult UpdateProfile(UserProfileUpdateDTO userProfileUpdateDto)
+        {
+            int id = GetUserId();
+
+            var user = context.Users.Find(id);
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+
+            // update the user profile
+            user.FirstName = userProfileUpdateDto.FirstName;
+            user.LastName = userProfileUpdateDto.LastName;
+            user.Email = userProfileUpdateDto.Email;
+            user.Phone = userProfileUpdateDto.Phone ?? "";
+            user.Address = userProfileUpdateDto.Address;
+
+            context.SaveChanges();
+
+            //Trả lại thông tin cho người dùng
+            var userProfileDto = new UserProfileDTO()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Phone = user.Phone,
+                Address = user.Address,
+                Role = user.Role,
+                CreatedAt = user.CreatedAt
+            };
+
+            return Ok(userProfileDto);
+        }
+
+        [Authorize]
+        [HttpPut("UpdatePassword")]
+        public IActionResult UpdatePassword([Required, MinLength(8), MaxLength(100)] string password)
+        {
+            int id = GetUserId();
+
+            var user = context.Users.Find(id);
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+
+
+            // mã hóa mật khẩu
+            var passwordHasher = new PasswordHasher<User>();
+            string encryptedPassword = passwordHasher.HashPassword(new User(), password);
+
+
+            // update password
+            user.Password = encryptedPassword;
+
+            context.SaveChanges();
+
+            return Ok();
+        }
+
+        private int GetUserId()
+        {
+            var identity = User.Identity as ClaimsIdentity;
+            if (identity == null)
+            {
+                return 0;
+            }
+
+            var claim = identity.Claims.FirstOrDefault(c => c.Type.ToLower() == "id");
+            if (claim == null)
+            {
+                return 0;
+            }
+
+            int id;
+            try
+            {
+                id = int.Parse(claim.Value);
+            }
+
+            catch (Exception)
+            {
+
+                return 0;
+            }
+            return id;
+        }
+
+        //Jwt
         private string CreateJWT(User user)
         {
             List<Claim> claims = new List<Claim>()

@@ -1,6 +1,7 @@
 ﻿using Azure;
 using BeautyBoxAPI.Models;
 using BeautyBoxAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -22,17 +23,19 @@ namespace BeautyBoxAPI.Controllers
             , "Dụng cụ trang điểm", "Mini/Sample"
         };
 
+        public ProductsController(ApplicationDbContext context, IWebHostEnvironment environment)
+        {
+            this._context = context;
+            this.environment = environment;
+        }
+
+
         [HttpGet("categories")]
         public IActionResult GetCategories()
         {
             return Ok(listCategories);
         }
 
-        public ProductsController(ApplicationDbContext context, IWebHostEnvironment environment)
-        {
-            this._context = context;
-            this.environment = environment;
-        }
 
         [HttpGet]
         public IActionResult GetProducts(string? search, string? category,int? minPrice, int? maxPrice, string? brand
@@ -170,6 +173,7 @@ namespace BeautyBoxAPI.Controllers
             return Ok(returns);
         }
 
+
         [HttpGet("id")]
         public IActionResult GetProducts(int id)
         {
@@ -181,6 +185,7 @@ namespace BeautyBoxAPI.Controllers
             return Ok(product);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult CreateProduct([FromForm] ProductsDTO productsDTO)
         {
@@ -226,6 +231,7 @@ namespace BeautyBoxAPI.Controllers
             return Ok(product);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPut("id")]
         public IActionResult UpdateProduct(int id,[FromForm] ProductsDTO productsDTO)
         {
@@ -273,6 +279,7 @@ namespace BeautyBoxAPI.Controllers
             return Ok(product);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("id")]
         public IActionResult DeleteProduct(int id)
         {

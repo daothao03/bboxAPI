@@ -1,5 +1,6 @@
 ﻿using BeautyBoxAPI.Models;
 using BeautyBoxAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +33,9 @@ namespace BeautyBoxAPI.Controllers
             return Ok(listSubjects);
         }
 
+
         //Get all contacts + Pagination
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult GetContacts(int? page) //page: trang hiện tại
         {
@@ -70,7 +73,9 @@ namespace BeautyBoxAPI.Controllers
             return Ok(returns);
         }
 
+
         //Get contacts by ID
+        [Authorize(Roles = "admin")]
         [HttpGet("{id}")]
         public IActionResult GetContact(int id)
         {
@@ -85,6 +90,7 @@ namespace BeautyBoxAPI.Controllers
 
             return Ok(contact);
         }
+
 
         //Create Contact
         [HttpPost]
@@ -119,37 +125,40 @@ namespace BeautyBoxAPI.Controllers
             return Ok(contact);
         }
 
+
         //Update Contact
         [HttpPut("id")]
-        public IActionResult UpdateContact(int id, ContactsDTO contactsDTO)
-        {
-            var subject = _context.Subjects.Find(contactsDTO.SubjectID);
-            if (subject == null)
-            //if (!listSubjects.Contains(contactsDTO.Subject))
-            {
-                ModelState.AddModelError("Subjects", "Please select a valid subjects");
-                return BadRequest(ModelState);
-            }
+        //public IActionResult UpdateContact(int id, ContactsDTO contactsDTO)
+        //{
+        //    var subject = _context.Subjects.Find(contactsDTO.SubjectID);
+        //    if (subject == null)
+        //    //if (!listSubjects.Contains(contactsDTO.Subject))
+        //    {
+        //        ModelState.AddModelError("Subjects", "Please select a valid subjects");
+        //        return BadRequest(ModelState);
+        //    }
 
-            var contact = _context.Contacts.Find(id);
-            if(contact == null)
-            {
-                return NotFound();
-            }    
+        //    var contact = _context.Contacts.Find(id);
+        //    if(contact == null)
+        //    {
+        //        return NotFound();
+        //    }    
 
-            contact.FirstName = contactsDTO.FirstName;
-            contact.LastName = contactsDTO.LastName;
-            contact.Email = contactsDTO.Email;
-            contact.Phone = contactsDTO.Phone ?? "";
-            //contact.Subject = contactsDTO.Subject;
-            contact.Subject = subject;
-            contact.Message = contactsDTO.Message;
+        //    contact.FirstName = contactsDTO.FirstName;
+        //    contact.LastName = contactsDTO.LastName;
+        //    contact.Email = contactsDTO.Email;
+        //    contact.Phone = contactsDTO.Phone ?? "";
+        //    //contact.Subject = contactsDTO.Subject;
+        //    contact.Subject = subject;
+        //    contact.Message = contactsDTO.Message;
 
-            _context.SaveChanges();
-            return Ok();
-        }
+        //    _context.SaveChanges();
+        //    return Ok();
+        //}
+
 
         //Delete Contact
+        [Authorize(Roles = "admin")]
         [HttpDelete("id")]
         public IActionResult DeleteContact(int id)
         {

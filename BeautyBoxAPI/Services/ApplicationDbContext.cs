@@ -17,5 +17,7 @@ namespace BeautyBoxAPI.Services
         public DbSet<Subject> Subjects { get; set; }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<PasswordReset> PasswordReset { get; set; }
     }
 }

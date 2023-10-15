@@ -79,3 +79,15 @@ C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\Scrutor.d
 C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.dll
 C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
 C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\FubarCoder.RestSharp.Portable.Core.dll
+C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\FubarCoder.RestSharp.Portable.HttpClient.dll
+C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\JsonSubTypes.dll
+C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\MailKit.dll
+C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\MimeKit.dll
+C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\sib_api_v3_sdk.dll
+C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\SendGrid.dll
+C:\Users\daoth\source\repos\BeautyBoxAPI\BeautyBoxAPI\bin\Debug\net7.0\StarkbankEcdsa.dll

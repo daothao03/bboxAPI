@@ -4,10 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using sib_api_v3_sdk.Client;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Configuration.Default.ApiKey.Add("api-key", builder.Configuration["BrevoApi: ApiKey"]);
 
 // Add services to the container.
 

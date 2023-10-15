@@ -18,11 +18,15 @@ namespace BeautyBoxAPI.Controllers
     {
         private readonly IConfiguration configuration;
         private readonly ApplicationDbContext context;
+        private readonly string senderEmail;
+        private readonly string senderName;
 
         public AccountsController(IConfiguration configuration, ApplicationDbContext context)
         {
             this.configuration = configuration;
             this.context = context;
+            this.senderEmail = configuration["BrevoApi: SenderEmail"]!;
+            this.senderName = configuration["BrevoApi: SenderName"]!;
         }
 
         //Đăng ký người dùng
@@ -82,7 +86,7 @@ namespace BeautyBoxAPI.Controllers
 
             return Ok(response);
         }
-
+         
         //Phương thức xác thực người dùng
         [HttpPost("Login")]
         public IActionResult Login(string email, string password)
@@ -181,6 +185,7 @@ namespace BeautyBoxAPI.Controllers
                 "Best Regards\n";
 
 
+            EmailSender.SendEmail(senderEmail, senderName, email, username, emailSubject, emailMessage);
             //emailSender.SendEmail(emailSubject, email, username, emailMessage).Wait();
 
             return Ok();

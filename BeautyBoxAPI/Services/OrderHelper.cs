@@ -45,9 +45,9 @@
 
         public static Dictionary<string, string> PaymentMethods { get; } = new()
         {
-            { "Cash", "Cash on Delivery" }, //key -> server, value -> client
-            { "Paypal", "Paypal" },
-            { "Credit Card", "Credit Card" }
+            { "Cash", "Thanh toán khi nhận hàng" }, //key -> server, value -> client
+            { "Momo", "Thanh toán qua ví điện tử Momo" },
+            { "Credit Card", "Thanh toán qua tài khoản ngân hàng" }
         };
 
         //trạng thái thanh toán

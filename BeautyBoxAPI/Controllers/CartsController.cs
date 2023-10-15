@@ -17,12 +17,6 @@ namespace BeautyBoxAPI.Controllers
         }
 
 
-        [HttpGet("PaymentMethods")]
-        public IActionResult GetPaymentMethods()
-        {
-            return Ok(OrderHelper.PaymentMethods);
-        }
-
         [HttpGet]
         public IActionResult GetCart(string productIdentifiers)
         {
@@ -56,6 +50,13 @@ namespace BeautyBoxAPI.Controllers
             }
 
             return Ok(cartDto);
+        }
+
+
+        [HttpGet("PaymentMethods")]
+        public IActionResult GetPaymentMethods()
+        {
+            return Ok(OrderHelper.PaymentMethods);
         }
     }
 }

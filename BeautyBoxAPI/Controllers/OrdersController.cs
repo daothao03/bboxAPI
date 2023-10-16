@@ -24,6 +24,8 @@ namespace BeautyBoxAPI.Controllers
         [HttpPost]
         public IActionResult CreateOrder(OrderDTO orderDTO)
         {
+            decimal totalAmount = 0;
+
             // kiểm tra pttt
             if (!OrderHelper.PaymentMethods.ContainsKey(orderDTO.PaymentMethod))
             {
@@ -72,6 +74,9 @@ namespace BeautyBoxAPI.Controllers
 
                 //thêm đơn hàng
                 order.OrderItems.Add(orderItem);
+
+                // tính tổng tiền cho từng sản phẩm
+                totalAmount += orderItem.UnitPrice * orderItem.Quantity;
             }
 
             //kiểm tra giỏ hàng có sp không
@@ -96,7 +101,12 @@ namespace BeautyBoxAPI.Controllers
             // hide the user password
             order.User.Password = "";
 
-            return Ok(order);
+            var returns = new
+            {
+                Order = order,
+                Total = totalAmount
+            };
+            return Ok(returns);
         }
 
         //lấy ra đơn hàng, phân trang

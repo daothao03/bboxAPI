@@ -174,6 +174,26 @@ namespace BeautyBoxAPI.Controllers
         }
 
 
+        [HttpGet("Top5Produtcs")]
+        public IActionResult GetTop5Products () { 
+
+            // Lấy ra danh sách 5 sản phẩm bán chạy nhất
+            var topSellingProducts = _context.Products
+                .Join(_context.OrderItems,
+                      product => product.Id,
+                      orderItem => orderItem.ProductId,
+                      (product, orderItem) => new { Product = product, OrderItem = orderItem })
+                .GroupBy(item => item.Product)
+                .OrderByDescending(group => group.Sum(item => item.OrderItem.Quantity))
+                .Select(group => group.Key)
+                .Take(5)
+                .ToList();
+
+            return Ok(topSellingProducts);
+        }
+
+
+
         [HttpGet("id")]
         public IActionResult GetProducts(int id)
         {

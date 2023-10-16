@@ -17,6 +17,26 @@
       "PackagePath": "staticwebassets\\images\\productsImage\\20231015200516999.webp"
     },
     {
+      "Id": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\productsImage\\20231016084951655.webp",
+      "PackagePath": "staticwebassets\\images\\productsImage\\20231016084951655.webp"
+    },
+    {
+      "Id": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\productsImage\\20231016085201278.webp",
+      "PackagePath": "staticwebassets\\images\\productsImage\\20231016085201278.webp"
+    },
+    {
+      "Id": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\productsImage\\20231016085337868.webp",
+      "PackagePath": "staticwebassets\\images\\productsImage\\20231016085337868.webp"
+    },
+    {
+      "Id": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\productsImage\\20231016085504526.webp",
+      "PackagePath": "staticwebassets\\images\\productsImage\\20231016085504526.webp"
+    },
+    {
+      "Id": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\productsImage\\20231016085700872.webp",
+      "PackagePath": "staticwebassets\\images\\productsImage\\20231016085700872.webp"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.BeautyBoxAPI.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

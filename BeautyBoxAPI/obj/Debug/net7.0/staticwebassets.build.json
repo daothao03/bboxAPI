@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XYpljJtULkKBzXYaDKcHq1CHFyfpD+ecgbA5OWcatjU=",
+  "Hash": "joJToKNwox8dmHTsSXGGCQV5rlAwVqZHTdBifxpj+qg=",
   "Source": "BeautyBoxAPI",
   "BasePath": "_content/BeautyBoxAPI",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\productsImage\\20231016085700872.webp"
+    },
+    {
+      "Identity": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\productsImage\\20231021211952015.webp",
+      "SourceId": "BeautyBoxAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\",
+      "BasePath": "_content/BeautyBoxAPI",
+      "RelativePath": "images/productsImage/20231021211952015.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\productsImage\\20231021211952015.webp"
     }
   ]
 }

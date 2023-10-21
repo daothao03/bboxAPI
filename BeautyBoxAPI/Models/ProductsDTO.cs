@@ -20,6 +20,8 @@ namespace BeautyBoxAPI.Models
         [MaxLength(5000)]
         public string? Description { get; set; }
 
+        public int SoLuong { get; set; }
+
         public IFormFile? ImageFileName { get; set; }
     }
 }

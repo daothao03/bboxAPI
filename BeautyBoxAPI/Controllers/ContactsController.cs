@@ -33,6 +33,22 @@ namespace BeautyBoxAPI.Controllers
             return Ok(listSubjects);
         }
 
+        //Create Subjects 
+        [Authorize(Roles = "admin")]
+        [HttpPost("createSubjects")]
+        public IActionResult CreateSubject(SubjectsDTO subjectsDTO)
+        {
+            Subject subject = new Subject()
+            {
+                Name = subjectsDTO.Name
+            };
+
+            _context.Subjects.Add(subject);
+            _context.SaveChanges();
+
+            return Ok(subject);
+        }
+
 
         //Get all contacts + Pagination
         [Authorize(Roles = "admin")]

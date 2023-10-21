@@ -21,6 +21,8 @@ namespace BeautyBoxAPI.Models
 
         public string Description { get; set; } = "";
 
+        public int SoLuong { get; set; }
+
         [MaxLength(100)]
         public string ImageFileName { get; set; } = "";
 

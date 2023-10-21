@@ -51,9 +51,37 @@ namespace BeautyBoxAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserID");
-
                     b.ToTable("Blogs");
+                });
+
+            modelBuilder.Entity("BeautyBoxAPI.Models.ChiTietHDN", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("GiaNhap")
+                        .HasPrecision(16, 2)
+                        .HasColumnType("decimal(16,2)");
+
+                    b.Property<int>("HdnId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HdnId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("chiTietHDN");
                 });
 
             modelBuilder.Entity("BeautyBoxAPI.Models.Contact", b =>
@@ -99,6 +127,68 @@ namespace BeautyBoxAPI.Migrations
                     b.HasIndex("SubjectId");
 
                     b.ToTable("Contacts");
+                });
+
+            modelBuilder.Entity("BeautyBoxAPI.Models.HDN", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("NccIdID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserIdId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NccIdID");
+
+                    b.HasIndex("UserIdId");
+
+                    b.ToTable("hDNs");
+                });
+
+            modelBuilder.Entity("BeautyBoxAPI.Models.NhaCungCap", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("SDT")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("NhaCungCap");
                 });
 
             modelBuilder.Entity("BeautyBoxAPI.Models.Order", b =>
@@ -244,9 +334,39 @@ namespace BeautyBoxAPI.Migrations
                         .HasPrecision(16, 2)
                         .HasColumnType("decimal(16,2)");
 
+                    b.Property<int>("SoLuong")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("BeautyBoxAPI.Models.Promotions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.Property<decimal>("Percent")
+                        .HasPrecision(16, 2)
+                        .HasColumnType("decimal(16,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Promotions");
                 });
 
             modelBuilder.Entity("BeautyBoxAPI.Models.Subject", b =>
@@ -320,15 +440,23 @@ namespace BeautyBoxAPI.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("BeautyBoxAPI.Models.Blog", b =>
+            modelBuilder.Entity("BeautyBoxAPI.Models.ChiTietHDN", b =>
                 {
-                    b.HasOne("BeautyBoxAPI.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserID")
+                    b.HasOne("BeautyBoxAPI.Models.HDN", "hdn")
+                        .WithMany("ChiTietHDNs")
+                        .HasForeignKey("HdnId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.HasOne("BeautyBoxAPI.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("hdn");
                 });
 
             modelBuilder.Entity("BeautyBoxAPI.Models.Contact", b =>
@@ -340,6 +468,25 @@ namespace BeautyBoxAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("Subject");
+                });
+
+            modelBuilder.Entity("BeautyBoxAPI.Models.HDN", b =>
+                {
+                    b.HasOne("BeautyBoxAPI.Models.NhaCungCap", "NccId")
+                        .WithMany()
+                        .HasForeignKey("NccIdID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BeautyBoxAPI.Models.User", "UserId")
+                        .WithMany()
+                        .HasForeignKey("UserIdId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("NccId");
+
+                    b.Navigation("UserId");
                 });
 
             modelBuilder.Entity("BeautyBoxAPI.Models.Order", b =>
@@ -370,6 +517,11 @@ namespace BeautyBoxAPI.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("BeautyBoxAPI.Models.HDN", b =>
+                {
+                    b.Navigation("ChiTietHDNs");
                 });
 
             modelBuilder.Entity("BeautyBoxAPI.Models.Order", b =>

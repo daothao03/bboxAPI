@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "jZtK3RxyHRylC64z/dOTXRgrF/dMFlPZCIY21dHtOYo2tEEYbmEacAN8P3nplitDlrCVKkPXz5aie5Wx50//yw==",
+  "dgSpecHash": "Nq/S0QhsoWKG553pdMATUlmsJHMB0PHXaOjG40niQIWagBS7hN53T5bWW2iPlhhdpY4geSu/W3suYlo94Ucv8Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\BeautyBoxAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\daoth\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\daoth\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\daoth\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\daoth\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",

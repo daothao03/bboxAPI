@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets\\images\\productsImage\\20231016085700872.webp"
     },
     {
+      "Id": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\productsImage\\20231021211952015.webp",
+      "PackagePath": "staticwebassets\\images\\productsImage\\20231021211952015.webp"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.BeautyBoxAPI.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

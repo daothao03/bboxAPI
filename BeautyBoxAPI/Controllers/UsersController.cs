@@ -94,5 +94,22 @@ namespace BeautyBoxAPI.Controllers
 
             return Ok(userProfileDto);
         }
+
+        [Authorize(Roles = "admin")]
+        [HttpPut("UpdateUserRole/{userId}")]
+        public IActionResult UpdateUserRole(int userId, [FromBody] string newRole)
+        {
+            var user = context.Users.Find(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // Cập nhật quyền của người dùng
+            user.Role = newRole;
+            context.SaveChanges();
+
+            return Ok("Quyền của người dùng đã được cập nhật.");
+        }
     }
 }

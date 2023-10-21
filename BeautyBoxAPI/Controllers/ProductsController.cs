@@ -33,6 +33,7 @@ namespace BeautyBoxAPI.Controllers
         [HttpGet("categories")]
         public IActionResult GetCategories()
         {
+            //var listCategories = _context.Categories.ToList();
             return Ok(listCategories);
         }
 
@@ -205,6 +206,7 @@ namespace BeautyBoxAPI.Controllers
             return Ok(product);
         }
 
+
         [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult CreateProduct([FromForm] ProductsDTO productsDTO)
@@ -233,6 +235,7 @@ namespace BeautyBoxAPI.Controllers
                 productsDTO.ImageFileName.CopyTo(FolderNew); 
             }
 
+
             //save the product in the database
             Product product = new Product()
             {
@@ -241,6 +244,7 @@ namespace BeautyBoxAPI.Controllers
                 Category = productsDTO.Category,
                 Price = productsDTO.Price,
                 Description = productsDTO.Description ?? "",
+                SoLuong = productsDTO.SoLuong,
                 ImageFileName = imageFileName,
                 CreatedAt = DateTime.Now
             };
@@ -255,6 +259,7 @@ namespace BeautyBoxAPI.Controllers
         [HttpPut("id")]
         public IActionResult UpdateProduct(int id,[FromForm] ProductsDTO productsDTO)
         {
+
             if (!listCategories.Contains(productsDTO.Category))
             {
                 ModelState.AddModelError("Category", "Please select a valid category");
@@ -292,6 +297,7 @@ namespace BeautyBoxAPI.Controllers
             product.Category = productsDTO.Category;
             product.Price = productsDTO.Price;
             product.Description = productsDTO.Description ?? "";
+            product.SoLuong = productsDTO.SoLuong;
             product.ImageFileName = imageFileName;
 
             _context.SaveChanges();

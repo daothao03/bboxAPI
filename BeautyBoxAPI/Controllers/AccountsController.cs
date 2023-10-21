@@ -134,15 +134,6 @@ namespace BeautyBoxAPI.Controllers
         }
 
 
-        // ủy quyền người dùng - Add User Authorization
-        //[Authorize]
-        //[HttpGet("AuthorizeAuthenticatedUsers")]
-        //public IActionResult AuthorizeAuthenticatedUsers()
-        //{
-        //    return Ok("You are Authorized");
-        //}
-
-
         //Người dùng yêu cầu reset password
         [HttpPost("ForgotPassword")]
         public IActionResult ForgotPassword(string email)
@@ -191,6 +182,7 @@ namespace BeautyBoxAPI.Controllers
             return Ok();
         }
 
+
         [HttpPost("ResetPassword")]
         public IActionResult ResetPassword(string token, string password)
         {
@@ -208,16 +200,16 @@ namespace BeautyBoxAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            // encrypt password
+            // mã hóa mật khẩu
             var passwordHasher = new PasswordHasher<User>();
             string encryptedPassword = passwordHasher.HashPassword(new User(), password);
 
 
-            // save the new encrypted password
+            // lưu mật khẩu mã hóa vào csdl
             user.Password = encryptedPassword;
 
 
-            // delete the token
+            // xóa mã token
             context.PasswordReset.Remove(pwdReset);
 
 
@@ -225,6 +217,8 @@ namespace BeautyBoxAPI.Controllers
 
             return Ok();
         }
+
+
 
         //Methods cho phép người dùng xem profile của mình
         [Authorize]
@@ -290,6 +284,8 @@ namespace BeautyBoxAPI.Controllers
 
             return Ok(userProfileDto);
         }
+
+
 
         [Authorize]
         [HttpPut("UpdatePassword")]

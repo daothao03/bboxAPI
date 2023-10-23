@@ -1,85 +1,85 @@
-﻿//using BeautyBoxAPI.Models;
-//using BeautyBoxAPI.Services;
-//using Microsoft.AspNetCore.Authorization;
-//using Microsoft.AspNetCore.Http;
-//using Microsoft.AspNetCore.Mvc;
+﻿using BeautyBoxAPI.Models;
+using BeautyBoxAPI.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
-//namespace BeautyBoxAPI.Controllers
-//{
-//    [Authorize(Roles ="admin")]
-//    [Route("api/[controller]")]
-//    [ApiController]
-//    public class NhaCungCapsController : ControllerBase
-//    {
-//        private readonly ApplicationDbContext context;
+namespace BeautyBoxAPI.Controllers
+{
+    [Authorize(Roles = "admin")]
+    [Route("api/[controller]")]
+    [ApiController]
+    public class NhaCungCapsController : ControllerBase
+    {
+        private readonly ApplicationDbContext context;
 
-//        public NhaCungCapsController(ApplicationDbContext context)
-//        {
-//            this.context = context;
-//        }
+        public NhaCungCapsController(ApplicationDbContext context)
+        {
+            this.context = context;
+        }
 
 
-//        [HttpGet]
-//        public IActionResult GetSupplier()
-//        {
-//            var listSupplier = context.NhaCungCap.ToList();
-//            return Ok(listSupplier);
-//        }
+        [HttpGet]
+        public IActionResult GetSupplier()
+        {
+            var listSupplier = context.Suppliers.ToList();
+            return Ok(listSupplier);
+        }
 
-//        [HttpPost]
-//        public IActionResult CreateSupplier(NhaCungCapDTO nhaCungCapDTO) 
-//        { 
-//            NhaCungCap ncc = new NhaCungCap()
-//            {
-//                Name = nhaCungCapDTO.Name,
-//                Email = nhaCungCapDTO.Email,
-//                Address = nhaCungCapDTO.Address,
-//                SDT = nhaCungCapDTO.SDT
-//            };
+        [HttpPost]
+        public IActionResult CreateSupplier(SupliersDTO nhaCungCapDTO)
+        {
+            Suppliers ncc = new Suppliers()
+            {
+                Name = nhaCungCapDTO.Name,
+                Email = nhaCungCapDTO.Email,
+                Address = nhaCungCapDTO.Address,
+                SDT = nhaCungCapDTO.SDT
+            };
 
-//            context.NhaCungCap.Add(ncc);
-//            context.SaveChanges();
+            context.Suppliers.Add(ncc);
+            context.SaveChanges();
 
-//            return Ok(ncc);
-//        }
+            return Ok(ncc);
+        }
 
-//        [HttpPut]
-//        public IActionResult UpdateSupplier(int id, NhaCungCapDTO nccDTO) 
-//        {
-//            var ncc = context.NhaCungCap.Find(id);
-//            if (ncc == null)
-//            {
-//                return NotFound();
-//            }
+        [HttpPut]
+        public IActionResult UpdateSupplier(int id, SupliersDTO nccDTO)
+        {
+            var ncc = context.Suppliers.Find(id);
+            if (ncc == null)
+            {
+                return NotFound();
+            }
 
-//            ncc.Name = nccDTO.Name;
-//            ncc.Address = nccDTO.Address;
-//            ncc.Email = nccDTO.Email;
-//            ncc.SDT = nccDTO.SDT;
+            ncc.Name = nccDTO.Name;
+            ncc.Address = nccDTO.Address;
+            ncc.Email = nccDTO.Email;
+            ncc.SDT = nccDTO.SDT;
 
-//            context.SaveChanges();
+            context.SaveChanges();
 
-//            return Ok();
-//        }
+            return Ok();
+        }
 
-//        [HttpDelete]
-//        public IActionResult DeleteSupplier(int id)
-//        {
-//            try
-//            {
-//                var ncc = new NhaCungCap()
-//                {
-//                    ID = id
-//                };
-//                context.NhaCungCap.Remove(ncc);
-//                context.SaveChanges();
+        [HttpDelete]
+        public IActionResult DeleteSupplier(int id)
+        {
+            try
+            {
+                var ncc = new Suppliers()
+                {
+                    ID = id
+                };
+                context.Suppliers.Remove(ncc);
+                context.SaveChanges();
 
-//            }
-//            catch (Exception)
-//            {
-//                return NotFound();
-//            }
-//            return Ok();
-//        }
-//    }
-//}
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+            return Ok();
+        }
+    }
+}

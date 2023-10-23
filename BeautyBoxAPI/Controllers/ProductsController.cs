@@ -175,7 +175,7 @@ namespace BeautyBoxAPI.Controllers
         }
 
 
-        [HttpGet("Top5Produtcs")]
+        [HttpGet("Top5Products")]
         public IActionResult GetTop5Products () { 
 
             // Lấy ra danh sách 5 sản phẩm bán chạy nhất

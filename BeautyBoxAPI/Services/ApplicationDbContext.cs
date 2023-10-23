@@ -29,6 +29,8 @@ namespace BeautyBoxAPI.Services
 
         public DbSet<Promotions> Promotions { get; set;}
 
+        public DbSet<Suppliers> Suppliers { get; set; }
+
         public DbSet<Banner> Banner { get; set; }
     }
 }

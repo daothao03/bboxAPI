@@ -1,5 +1,6 @@
 ﻿using BeautyBoxAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Asn1.X500;
 
 namespace BeautyBoxAPI.Services
 {
@@ -7,7 +8,7 @@ namespace BeautyBoxAPI.Services
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
-            
+
         }
 
         public DbSet<Contact> Contacts { get; set; }
@@ -28,10 +29,6 @@ namespace BeautyBoxAPI.Services
 
         public DbSet<Promotions> Promotions { get; set;}
 
-        public DbSet<NhaCungCap> NhaCungCap { get; set; }
-
-        public DbSet<HDN> hDNs { get; set; }
-
-        public DbSet<ChiTietHDN> chiTietHDN { get; set; } 
+        public DbSet<Banner> Banner { get; set; }
     }
 }

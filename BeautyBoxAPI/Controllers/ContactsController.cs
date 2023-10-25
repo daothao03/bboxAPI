@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Tls;
 using System.Net.Mail;
 
 namespace BeautyBoxAPI.Controllers
@@ -13,15 +14,21 @@ namespace BeautyBoxAPI.Controllers
     public class ContactsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IConfiguration configuration;
+        private readonly string senderEmail;
+        private readonly string senderName;
 
         //private readonly List<string> listSubjects = new List<string>()
         //{
         //    "Order Status", "Refund Request", "Job Application", "Other"
         //};
 
-        public ContactsController(ApplicationDbContext context)
+        public ContactsController(ApplicationDbContext context, IConfiguration configuration)
         {
             this._context = context;
+            this.configuration = configuration;
+            this.senderEmail = configuration["BrevoApi: SenderEmail"]!;
+            this.senderName = configuration["BrevoApi: SenderName"]!;
         }
 
 
@@ -138,6 +145,18 @@ namespace BeautyBoxAPI.Controllers
             _context.Contacts.Add(contact);
             _context.SaveChanges();
 
+            // send confirmation email
+            string emailSubject = "Contact Confirmation";
+            string username = contactsDTO.FirstName + " " + contactsDTO.LastName;
+            string emailMessage = "Dear " + username + "\n" +
+                "We received you message. Thank you for contacting us.\n" +
+                "Our team will contact you very soon.\n" +
+                "Best Regards\n\n" +
+                "Your Message:\n" + contactsDTO.Message;
+
+            //emailSender.SendEmail(emailSubject, contact.Email, username, emailMessage).Wait();
+            EmailSender.SendEmail(senderEmail, senderName, contact.Email, username, emailSubject, emailMessage);
+
             return Ok(contact);
         }
 
@@ -178,19 +197,6 @@ namespace BeautyBoxAPI.Controllers
         [HttpDelete("id")] 
         public IActionResult DeleteContact(int id)
         {
-            //Method 1: Use 2 query Query 1: Find the contact you want to delete
-            //                      Query 2: Delete contact
-            /*
-            var contact = _context.Contacts.Find(id);
-            if(contact == null)
-            {
-                return NotFound();
-            }
-            _context.Contacts.Remove(contact);
-            _context.SaveChanges();
-
-            return Ok();
-            */
 
             //Method 2: Optimize - Use 1 query to delete contact
             try

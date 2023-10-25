@@ -17,12 +17,24 @@
       "PackagePath": "staticwebassets\\images\\banner\\20231023232431052.webp"
     },
     {
+      "Id": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\banner\\20231026003348121.webp",
+      "PackagePath": "staticwebassets\\images\\banner\\20231026003348121.webp"
+    },
+    {
+      "Id": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\banner\\20231026003348147.webp",
+      "PackagePath": "staticwebassets\\images\\banner\\20231026003348147.webp"
+    },
+    {
       "Id": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\blogsImage\\20231015211610669.webp",
       "PackagePath": "staticwebassets\\images\\blogsImage\\20231015211610669.webp"
     },
     {
       "Id": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\blogsImage\\20231015211929598.webp",
       "PackagePath": "staticwebassets\\images\\blogsImage\\20231015211929598.webp"
+    },
+    {
+      "Id": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\blogsImage\\20231026003512459.webp",
+      "PackagePath": "staticwebassets\\images\\blogsImage\\20231026003512459.webp"
     },
     {
       "Id": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\productsImage\\20231012235539830.webp",
@@ -63,6 +75,10 @@
     {
       "Id": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\productsImage\\20231023231058845.webp",
       "PackagePath": "staticwebassets\\images\\productsImage\\20231023231058845.webp"
+    },
+    {
+      "Id": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\productsImage\\20231024163759569.webp",
+      "PackagePath": "staticwebassets\\images\\productsImage\\20231024163759569.webp"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.BeautyBoxAPI.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -72,7 +72,7 @@ namespace BeautyBoxAPI.Migrations
                     b.ToTable("Blogs");
                 });
 
-            modelBuilder.Entity("BeautyBoxAPI.Models.ChiTietHoaDonNhap", b =>
+            modelBuilder.Entity("BeautyBoxAPI.Models.ChiTietHDN", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -84,13 +84,13 @@ namespace BeautyBoxAPI.Migrations
                         .HasPrecision(16, 2)
                         .HasColumnType("decimal(16,2)");
 
-                    b.Property<int>("MaHoaDonNhap")
+                    b.Property<int>("MaHdn")
                         .HasColumnType("int");
 
                     b.Property<int>("MaSanPham")
                         .HasColumnType("int");
 
-                    b.Property<int>("SoLuong")
+                    b.Property<int>("Soluong")
                         .HasColumnType("int");
 
                     b.Property<int>("hdnId")
@@ -105,7 +105,7 @@ namespace BeautyBoxAPI.Migrations
 
                     b.HasIndex("sanphamId");
 
-                    b.ToTable("chiTietHoaDonNhaps");
+                    b.ToTable("ChiTietHDN");
                 });
 
             modelBuilder.Entity("BeautyBoxAPI.Models.Contact", b =>
@@ -164,7 +164,7 @@ namespace BeautyBoxAPI.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MaNCC")
+                    b.Property<int>("MaNCCID")
                         .HasColumnType("int");
 
                     b.Property<int>("MaNguoiDung")
@@ -183,16 +183,13 @@ namespace BeautyBoxAPI.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("nccID")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("MaNCCID");
 
                     b.HasIndex("UserId");
 
-                    b.HasIndex("nccID");
-
-                    b.ToTable("hoaDonNhaps");
+                    b.ToTable("HoaDonNhap");
                 });
 
             modelBuilder.Entity("BeautyBoxAPI.Models.Order", b =>
@@ -480,7 +477,7 @@ namespace BeautyBoxAPI.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("BeautyBoxAPI.Models.ChiTietHoaDonNhap", b =>
+            modelBuilder.Entity("BeautyBoxAPI.Models.ChiTietHDN", b =>
                 {
                     b.HasOne("BeautyBoxAPI.Models.HoaDonNhap", "hdn")
                         .WithMany("cthdn")
@@ -512,21 +509,21 @@ namespace BeautyBoxAPI.Migrations
 
             modelBuilder.Entity("BeautyBoxAPI.Models.HoaDonNhap", b =>
                 {
+                    b.HasOne("BeautyBoxAPI.Models.Suppliers", "MaNCC")
+                        .WithMany()
+                        .HasForeignKey("MaNCCID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("BeautyBoxAPI.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BeautyBoxAPI.Models.Suppliers", "ncc")
-                        .WithMany()
-                        .HasForeignKey("nccID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("MaNCC");
 
                     b.Navigation("User");
-
-                    b.Navigation("ncc");
                 });
 
             modelBuilder.Entity("BeautyBoxAPI.Models.Order", b =>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SEMRcYNvAHCAWNe+9UWUj1ERP7AXaBqQueX1+yzkImY=",
+  "Hash": "4wscGDbL0p6IKVn6n+y0MywKz6h5GxCFprnRPTkhd84=",
   "Source": "BeautyBoxAPI",
   "BasePath": "_content/BeautyBoxAPI",
   "Mode": "Default",
@@ -85,6 +85,40 @@
       "OriginalItemSpec": "wwwroot\\images\\banner\\20231023232431052.webp"
     },
     {
+      "Identity": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\banner\\20231026003348121.webp",
+      "SourceId": "BeautyBoxAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\",
+      "BasePath": "_content/BeautyBoxAPI",
+      "RelativePath": "images/banner/20231026003348121.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\banner\\20231026003348121.webp"
+    },
+    {
+      "Identity": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\banner\\20231026003348147.webp",
+      "SourceId": "BeautyBoxAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\",
+      "BasePath": "_content/BeautyBoxAPI",
+      "RelativePath": "images/banner/20231026003348147.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\banner\\20231026003348147.webp"
+    },
+    {
       "Identity": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\blogsImage\\20231015211610669.webp",
       "SourceId": "BeautyBoxAPI",
       "SourceType": "Discovered",
@@ -117,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\blogsImage\\20231015211929598.webp"
+    },
+    {
+      "Identity": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\blogsImage\\20231026003512459.webp",
+      "SourceId": "BeautyBoxAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\",
+      "BasePath": "_content/BeautyBoxAPI",
+      "RelativePath": "images/blogsImage/20231026003512459.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\blogsImage\\20231026003512459.webp"
     },
     {
       "Identity": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\productsImage\\20231012235539830.webp",
@@ -287,6 +338,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\productsImage\\20231023231058845.webp"
+    },
+    {
+      "Identity": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\images\\productsImage\\20231024163759569.webp",
+      "SourceId": "BeautyBoxAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\daoth\\source\\repos\\BeautyBoxAPI\\BeautyBoxAPI\\wwwroot\\",
+      "BasePath": "_content/BeautyBoxAPI",
+      "RelativePath": "images/productsImage/20231024163759569.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\productsImage\\20231024163759569.webp"
     }
   ]
 }

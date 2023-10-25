@@ -39,7 +39,6 @@ namespace BeautyBoxAPI.Controllers
                     continue;
                 }
 
-
                 var cartItemDto = new CartItemDTO();
                 cartItemDto.product = product; //sp = sp tìm đc qua key của dic
                 cartItemDto.SoLuong = pair.Value; //số lượng = value dic

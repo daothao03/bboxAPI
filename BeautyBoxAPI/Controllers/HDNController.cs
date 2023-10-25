@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Org.BouncyCastle.Asn1.X500;
+using SendGrid.Helpers.Mail;
 using sib_api_v3_sdk.Model;
 
 namespace BeautyBoxAPI.Controllers
@@ -21,83 +23,116 @@ namespace BeautyBoxAPI.Controllers
             this.context = context;
         }
 
-        [HttpPost]        
-        public IActionResult CreateHDN(HoaDonNhapDTO  hdnDTO)
+        //[HttpPost]
+        //public IActionResult CreateHDN(HoaDonNhapDTO hdnDTO)
+        //{
+        //    //đọc thông tin người dùng từ Jwt
+        //    int userId = JwtReader.GetUserId(User);
+        //    var user = context.Users.Find(userId);
+        //    if (user == null)
+        //    {
+        //        ModelState.AddModelError("Order", "Unable to create the order");
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    var nccId = context.Suppliers.Find(hdnDTO.MaNCC);
+        //    if (nccId == null)
+        //    {
+        //        ModelState.AddModelError("Nhà cung cấp", "Nhập nhà cung cấp hợp lệ");
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    ////chuyển đổi ProductIdentifiers -> Dictionary
+        //    //var productDictionary = OrderHelper.GetProductDictionary(hdnDTO.MaSanPham);
+
+        //    var hdn = new HoaDonNhap
+        //    {
+        //        CreatedAt = DateTime.Now,
+        //        MaNguoiDung = userId,
+        //        MaNCC = hdnDTO.MaNCC,
+        //        PaymentMethod = hdnDTO.PaymentMethod,
+        //        PaymentStatus = hdnDTO.PaymentStatus,
+        //        //cthdn = new List<ChiTietHoaDonNhap>()
+        //    };
+
+        //    //foreach (var detail in hdn.cthdn)
+        //    //{
+        //    //    var product = context.Products.Find(hdnDTO.MaSanPham);
+        //    //    var chitiethoadonnhap = new ChiTietHoaDonNhap()
+        //    //    {
+        //    //        MaSanPham = product,
+        //    //        SoLuong = detail.SoLuong,
+        //    //        GiaNhap = hdnDTO.GiaNhap
+        //    //    };
+        //    //    context.chiTietHoaDonNhaps.Add(chitiethoadonnhap);
+        //    //}
+
+        //    context.hoaDonNhaps.Add(hdn);
+        //    context.SaveChanges();
+        //    return Ok();
+
+        //}
+
+        [HttpPost]
+        public IActionResult CreateHDN(HoaDonNhapDTO hdnDTO)
         {
-            decimal totalAmount = 0;
-
-            // kiểm tra pttt
-            if (!OrderHelper.PaymentMethods.ContainsKey(hdnDTO.PaymentMethod))
-            {
-                ModelState.AddModelError("Payment Method", "Please select a valid payment method");
-                return BadRequest(ModelState);
-            }
-
             //đọc thông tin người dùng từ Jwt
             int userId = JwtReader.GetUserId(User);
             var user = context.Users.Find(userId);
             if (user == null)
             {
-                ModelState.AddModelError("Order", "Unable to create the order");
+                ModelState.AddModelError("Đơn hàng", "Không thể tạo đơn hàng");
                 return BadRequest(ModelState);
             }
 
-            //chuyển đổi ProductIdentifiers -> Dictionary
-            var productDictionary = OrderHelper.GetProductDictionary(hdnDTO.MaSanPham);
-
-            //tạo đơn hàng
-            HoaDonNhap hdn = new HoaDonNhap();
-            hdn.MaNguoiDung = userId;
-            hdn.CreatedAt = DateTime.Now;
-            hdn.PaymentMethod = hdnDTO.PaymentMethod;
-            hdn.PaymentStatus = OrderHelper.PaymentStatuses[0];
-
-            //foreach (var item in hdn.cthdn)
-            //{
-            //    int productId = pair.Key;
-            //    var product = context.Products.Find(productId);
-            //    if (product == null)
-            //    {
-            //        ModelState.AddModelError("Sản phẩm", "Sản phẩm có mã " + productId + " không tồn tại");
-            //        return BadRequest(ModelState);
-            //    }
-
-            //    var cthdn = new ChiTietHoaDonNhap()
-            //    {
-            //        MaSanPham = productId,
-            //        SoLuong = p,
-            //        GiaNhap = item.GiaNhap
-            //    };
-
-            //    hdn.cthdn.Add(cthdn);
-            //}
-
-            //kiểm tra sp có tồn tại trong csdl không
-            foreach (var pair in productDictionary)
+            var nccId = context.Suppliers.Find(hdnDTO.NccId);
+            if (nccId == null)
             {
-                int productId = pair.Key;
-                var product = context.Products.Find(productId);
-
-                if (product == null)
-                {
-                    ModelState.AddModelError("Sản phẩm", "Sản phẩm có mã " + productId + " không tồn tại");
-                    return BadRequest(ModelState);
-                }
-
-                //tạo chi tiết đơn hàng
-                var cthdn = new ChiTietHoaDonNhap();
-                cthdn.MaSanPham = productId;
-                cthdn.SoLuong = hdnDTO.SoLuong;
-                cthdn.GiaNhap = hdnDTO.GiaNhap;
-
-                //thêm đơn hàng
-                hdn.cthdn.Add(cthdn);
-
-                // tính tổng tiền cho từng sản phẩm
-                totalAmount += cthdn.GiaNhap * cthdn.SoLuong;
+                ModelState.AddModelError("Nhà cung cấp", "Nhà cung cấp không tồn tại!");
+                return BadRequest(ModelState);
             }
 
-            context.hoaDonNhaps.Add(hdn);
+            //tạo hóa đơn nhập
+            HoaDonNhap hdn = new HoaDonNhap()
+            {
+                MaNguoiDung = userId,
+                MaNCC = nccId,
+                CreatedAt = DateTime.Now,
+                PaymentMethod = hdnDTO.PaymentMethod,
+                PaymentStatus = hdnDTO.PaymentStatus,
+                cthdn = new List<ChiTietHDN>()
+            };
+
+            //HoaDonNhap hdn = new HoaDonNhap();
+            //hdn.MaNguoiDung = userId;
+            //hdn.MaNCC = nccId;
+            //hdn.CreatedAt = DateTime.Now;
+            //hdn.PaymentMethod = hdnDTO.PaymentMethod;
+            //hdn.PaymentStatus = hdnDTO.PaymentStatus;
+            //hdn.cthdn = new List<ChiTietHDN>();
+
+            //List<ChiTietHDN> cthdn = new List<ChiTietHDN>();
+
+            //foreach (var d in hdn.cthdn)
+            //{
+            //    d.MaSanPham = hdnDTO.MaSanPham;
+            //    d.MaHdn = hdn.Id;
+            //    d.Soluong = hdnDTO.Soluong;
+            //    d.GiaNhap = hdnDTO.GiaNhap;
+
+            //    hdn.cthdn.Add(d);
+            //}
+
+            ChiTietHDN cthdn = new ChiTietHDN
+            {
+                MaSanPham = hdnDTO.MaSanPham,
+                Soluong = hdnDTO.Soluong,
+                GiaNhap = hdnDTO.GiaNhap
+            };
+
+            hdn.cthdn.Add(cthdn);
+
+            context.HoaDonNhap.Add(hdn);
             context.SaveChanges();
 
             return Ok(hdn);

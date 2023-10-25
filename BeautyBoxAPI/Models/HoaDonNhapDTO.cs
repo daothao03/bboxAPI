@@ -5,16 +5,22 @@ namespace BeautyBoxAPI.Models
 {
     public class HoaDonNhapDTO
     {
-        [Required]
-        public string MaSanPham { get; set; } = "";
+        public int NccId { get; set; }
 
-        [Required]
-        public int SoLuong { get; set; }
+        public int MaSanPham { get; set; }
 
-        [Required, Precision(16,2)]
+
+        public int Soluong { get; set; }
+
+        [Required, Precision(16, 2)]
         public decimal GiaNhap { get; set; }
 
         [Required, MaxLength(100)]
         public string PaymentMethod { get; set; } = "";
+
+        [Required, MaxLength(100)]
+        public string PaymentStatus { get; set; } = "";
+       
+
     }
 }

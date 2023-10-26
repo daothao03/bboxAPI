@@ -19,8 +19,29 @@ namespace BeautyBoxAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetUsers(int? page)
+        public IActionResult GetUsers(string? name, string? phone, string? email 
+            ,int? page)
         {
+            IQueryable<User> query = context.Users;
+
+            //search
+            if (name != null)
+            {
+                query = query.Where(u => u.FirstName.Contains(name) || u.LastName.Contains(name));
+            }
+
+            if (phone != null)
+            {
+                query = query.Where(u => u.Phone == phone);
+            }
+
+            if (email != null)
+            {
+                query = query.Where(u => u.Email.Contains(email));
+            }
+
+            //pageination
+
             if (page == null || page < 1)
             {
                 page = 1;
@@ -33,11 +54,17 @@ namespace BeautyBoxAPI.Controllers
             totalPages = (int)Math.Ceiling(count / pageSize);
 
 
-            var users = context.Users
+            //var users = context.Users
+            //    .OrderByDescending(u => u.Id)
+            //    .Skip((int)(page - 1) * pageSize)
+            //    .Take(pageSize)
+            //.ToList();
+
+            query = query.Skip((int)(page - 1) * pageSize)
                 .OrderByDescending(u => u.Id)
-                .Skip((int)(page - 1) * pageSize)
-                .Take(pageSize)
-            .ToList();
+                .Take(pageSize);
+
+            var users = query.ToList();
 
             List<UserProfileDTO> userProfiles = new List<UserProfileDTO>();
             foreach (var user in users)

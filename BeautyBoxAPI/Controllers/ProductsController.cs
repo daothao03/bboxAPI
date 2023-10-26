@@ -39,7 +39,7 @@ namespace BeautyBoxAPI.Controllers
 
 
         [HttpGet]
-        public IActionResult GetProducts(string? search, string? category,int? minPrice, int? maxPrice, string? brand
+        public IActionResult Search(string? search, string? category,int? minPrice, int? maxPrice, string? brand
             , string? sort, string? typeSort
             , int? page)
         {

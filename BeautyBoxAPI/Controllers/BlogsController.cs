@@ -22,8 +22,16 @@ namespace BeautyBoxAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetBlogs(int? page) 
+        public IActionResult GetBlogs(string? search, int? page) 
         {
+            IQueryable<Blog> query = context.Blogs;
+
+            if (search != null)
+            {
+                query = query.Where(b => b.Title.Contains(search) || b.Content.Contains(search));
+            }
+
+            //pagination
             if (page == null || page < 1)
             {
                 page = 1;
@@ -35,11 +43,25 @@ namespace BeautyBoxAPI.Controllers
             decimal countContacts = context.Blogs.Count();
             totalPages = (int)Math.Ceiling(countContacts / pageSize); //Số trang 
 
-            var blogs = context.Blogs
-                .OrderByDescending(b => b.Id) //Sắp xếp bài viết mới nhất - cũ nhất
-                .Skip((int)(page - 1) * pageSize)//loại bỏ bài viết nhất định để gọi đến trang được yêu cầu
-                .Take(pageSize) //Lấy bài viết tại trang được yêu cầu
-                .ToList();
+            //var blogs = context.Blogs
+            //    .OrderByDescending(b => b.Id) //Sắp xếp bài viết mới nhất - cũ nhất
+            //    .Skip((int)(page - 1) * pageSize)//loại bỏ bài viết nhất định để gọi đến trang được yêu cầu
+            //    .Take(pageSize) //Lấy bài viết tại trang được yêu cầu
+            //    .ToList();
+
+            //var returns = new
+            //{
+            //    Contacts = blogs,
+            //    TotalPages = totalPages,
+            //    Page = page,
+            //    PageSize = pageSize
+            //};
+
+            query = query.Skip((int)(page - 1) * pageSize)
+                .OrderByDescending(b => b.Id)
+                .Take(pageSize);
+
+            var blogs = query.ToList();
 
             var returns = new
             {

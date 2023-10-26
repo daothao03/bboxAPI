@@ -20,10 +20,41 @@ namespace BeautyBoxAPI.Controllers
 
 
         [HttpGet]
-        public IActionResult GetSupplier()
+        public IActionResult GetSupplier(string? search , int? page)
         {
-            var listSupplier = context.Suppliers.ToList();
-            return Ok(listSupplier);
+            //var listSupplier = context.Suppliers.ToList();
+            //return Ok(listSupplier);
+            IQueryable<Suppliers> query = context.Suppliers;
+
+            //search
+            if (search != null)
+            {
+                query = query.Where(s => s.SDT == search || s.Name.Contains(search) || s.Email.Contains(search));
+            }
+
+            //pagination
+            if (page == null || page < 1)
+            {
+                page = 1;
+            }
+
+            int pageSize = 10;
+            int total = 0;
+
+            decimal count = query.Count();
+            total = (int)Math.Ceiling(count / pageSize);
+            query = query.Skip((int)(page - 1) * pageSize)
+                .Take(pageSize);
+
+            var supplier = query.ToList();
+
+            return Ok(new
+            {
+                ncc = supplier,
+                total = total,
+                page = page,
+                pageSize = pageSize
+            }); 
         }
 
         [HttpPost]

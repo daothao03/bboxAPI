@@ -9,7 +9,6 @@ namespace BeautyBoxAPI.Models
 
         public int MaSanPham { get; set; }
 
-
         public int Soluong { get; set; }
 
         [Required, Precision(16, 2)]

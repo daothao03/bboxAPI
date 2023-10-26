@@ -112,13 +112,24 @@ namespace BeautyBoxAPI.Controllers
         //lấy ra đơn hàng, phân trang
         [Authorize]
         [HttpGet]
-        public IActionResult GetOrders(int? page)
+        public IActionResult GetOrders(string? name, string? phone, int? page)
         {
             int userId = JwtReader.GetUserId(User);
             string role = context.Users.Find(userId)?.Role ?? ""; // JwtReader.GetUserRole(User);
 
             IQueryable<Order> query = context.Orders.Include(o => o.User)
                 .Include(o => o.OrderItems).ThenInclude(oi => oi.Product);
+
+            //search
+            if(name != null)
+            {
+                query = query.Where(o => o.User.FirstName.Contains(name) || o.User.LastName.Contains(name));
+            }
+
+            if (phone != null)
+            {
+                query = query.Where(o => o.User.Phone == phone);
+            }
 
             if (role != "admin")
             {

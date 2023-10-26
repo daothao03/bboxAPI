@@ -193,8 +193,6 @@ namespace BeautyBoxAPI.Controllers
             return Ok(topSellingProducts);
         }
 
-
-
         [HttpGet("id")]
         public IActionResult GetProducts(int id)
         {

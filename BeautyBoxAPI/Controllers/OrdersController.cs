@@ -18,6 +18,13 @@ namespace BeautyBoxAPI.Controllers
             this.context = context;
         }
 
+        //get paymentmethod
+        [HttpGet("paymentmethod")]
+        public IActionResult GetPaymentmethod()
+        {
+            var paymentmethod = OrderHelper.PaymentMethods.ToList();
+            return Ok(paymentmethod);
+        }
 
         //tạo đơn hàng
         [Authorize]

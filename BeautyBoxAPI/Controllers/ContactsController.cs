@@ -18,11 +18,6 @@ namespace BeautyBoxAPI.Controllers
         private readonly string senderEmail;
         private readonly string senderName;
 
-        //private readonly List<string> listSubjects = new List<string>()
-        //{
-        //    "Order Status", "Refund Request", "Job Application", "Other"
-        //};
-
         public ContactsController(ApplicationDbContext context, IConfiguration configuration)
         {
             this._context = context;
@@ -60,8 +55,26 @@ namespace BeautyBoxAPI.Controllers
         //Get all contacts + Pagination
         [Authorize(Roles = "admin")]
         [HttpGet]
-        public IActionResult GetContacts(int? page) //page: trang hiện tại
+        public IActionResult GetContacts(int? page, string? name, string? phone, string? email) //page: trang hiện tại
         {
+            IQueryable<Contact> query = _context.Contacts;
+
+            //search 
+            if(name != null)
+            {
+                query = query.Where(c => c.FirstName.Contains(name) || c.LastName.Contains(name));
+            }
+
+            if (phone != null)
+            {
+                query = query.Where(c => c.Phone == phone);
+            }
+
+            if (email != null)
+            {
+                query = query.Where(c => c.Email.Contains(email));
+            }
+
             if (page == null || page < 1)
             {
                 page = 1;
@@ -70,10 +83,10 @@ namespace BeautyBoxAPI.Controllers
             int pageSize = 10;
             int totalPages = 0; //hiển thị các nút phân trang
 
-            decimal countContacts = _context.Contacts.Count();
+            decimal countContacts =query.Count();
             totalPages = (int) Math.Ceiling(countContacts / pageSize); //Số trang 
 
-            var contacts = _context.Contacts
+            var contacts = query
                 .Include(contact => contact.Subject)
                 .OrderByDescending(contact => contact.ID) //Sắp xếp liên hệ mới nhất - cũ nhất
                 .Skip((int) (page - 1) * pageSize)//loại bỏ liên hệ nhất định để gọi đến trang được yêu cầu
@@ -117,7 +130,7 @@ namespace BeautyBoxAPI.Controllers
 
         //Create Contact
         [HttpPost]
-        public IActionResult CreateContact(ContactsDTO contactsDTO)
+        public IActionResult CreateContact(ContactsDTO contactsDTO) 
         {
             //User submit a contact form, front end application will show a list of accecptable subjects
             //User submit subject not valid -> server send an error message
@@ -160,45 +173,14 @@ namespace BeautyBoxAPI.Controllers
             return Ok(contact);
         }
 
-
-        //Update Contact
-        [HttpPut("id")]
-        //public IActionResult UpdateContact(int id, ContactsDTO contactsDTO)
-        //{
-        //    var subject = _context.Subjects.Find(contactsDTO.SubjectID);
-        //    if (subject == null)
-        //    //if (!listSubjects.Contains(contactsDTO.Subject))
-        //    {
-        //        ModelState.AddModelError("Subjects", "Please select a valid subjects");
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    var contact = _context.Contacts.Find(id);
-        //    if(contact == null)
-        //    {
-        //        return NotFound();
-        //    }    
-
-        //    contact.FirstName = contactsDTO.FirstName;
-        //    contact.LastName = contactsDTO.LastName;
-        //    contact.Email = contactsDTO.Email;
-        //    contact.Phone = contactsDTO.Phone ?? "";
-        //    //contact.Subject = contactsDTO.Subject;
-        //    contact.Subject = subject;
-        //    contact.Message = contactsDTO.Message;
-
-        //    _context.SaveChanges();
-        //    return Ok();
-        //}
-
-
         //Delete Contact
         [Authorize(Roles = "admin")]
         [HttpDelete("id")] 
         public IActionResult DeleteContact(int id)
         {
 
-            //Method 2: Optimize - Use 1 query to delete contact
+            //
+            // Optimize - Use 1 query to delete contact
             try
             {
                 var contact = new Contact()

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BeautyBoxAPI.Controllers
 {
@@ -79,12 +80,12 @@ namespace BeautyBoxAPI.Controllers
         //}
 
         [HttpGet("DoanhThu")]
-        public IActionResult ThongKe([FromQuery] DateTime? date)
+        public IActionResult DoanhThu([FromQuery] DateTime? date)
         {
             if (date.HasValue)
             {
                 // Tính doanh thu theo ngày
-                var dailyRevenue = context.Orders
+                var daily = context.Orders
                     .Where(order => order.CreatedAt.Date == date.Value.Date)
                     .SelectMany(order => order.OrderItems)
                     .Sum(orderItem => orderItem.Quantity * orderItem.UnitPrice);
@@ -92,7 +93,7 @@ namespace BeautyBoxAPI.Controllers
                 return Ok(new
                 {
                     Date = date.Value,
-                    Total = dailyRevenue
+                    Total = daily
                 });
             }
             else
@@ -104,7 +105,7 @@ namespace BeautyBoxAPI.Controllers
         }
 
         [HttpGet("TongHoaDon")]
-        public IActionResult TongSanPham([FromQuery] DateTime? date)
+        public IActionResult TongHoaDon([FromQuery] DateTime? date)
         {
             if (date.HasValue)
             {
@@ -120,7 +121,7 @@ namespace BeautyBoxAPI.Controllers
             }
             else
             {
-                // Tính tổng số hóa đơn
+                // Tính tổng sản phẩm
                 decimal total = context.Orders.Count();
                 return Ok(total);
             }
@@ -153,12 +154,36 @@ namespace BeautyBoxAPI.Controllers
         }
 
         [HttpGet("TongSanPham")]
-        public IActionResult TongSanPham()
+        public IActionResult TongSanPham([FromQuery] DateTime? date)
         {
             var total = context.OrderItems.Sum(o => o.Quantity);
 
             return Ok(total);
         }
 
+        [HttpGet("TongUser")]
+        public IActionResult TongUser([FromQuery] DateTime? date)
+        {
+            if (date.HasValue)
+            {
+                var total = context.Users
+                .Where(u => u.CreatedAt.Date == date.Value.Date).Count();
+
+                return Ok(new
+                {
+                    Date = date,
+                    Total = total
+                }
+                );
+            }
+            else
+            {
+                // Tính tổng sản phẩm
+
+                decimal total = context.Users.Count();
+
+                return Ok(total);
+            }
+        }
     }
 }

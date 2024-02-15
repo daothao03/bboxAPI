@@ -37,6 +37,26 @@ namespace BeautyBoxAPI.Controllers
             return Ok(listCategories);
         }
 
+        [HttpPost("categories/add")]
+        public IActionResult AddCategory([FromBody] string newCategory)
+        {
+            if (string.IsNullOrEmpty(newCategory))
+            {
+                return BadRequest("New category cannot be empty");
+            }
+
+            // Check if the category already exists
+            if (listCategories.Contains(newCategory))
+            {
+                return BadRequest("Category already exists");
+            }
+
+            // Add the new category to the list
+            listCategories.Add(newCategory);
+
+            return Ok(listCategories);
+        }
+
 
         [HttpGet]
         public IActionResult Search(string? search, string? category,int? minPrice, int? maxPrice, string? brand

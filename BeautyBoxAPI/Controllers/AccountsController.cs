@@ -313,8 +313,6 @@ namespace BeautyBoxAPI.Controllers
             return Ok();
         }
 
-
-
         //Jwt
         private string CreateJWT(User user)
         {
@@ -347,22 +345,5 @@ namespace BeautyBoxAPI.Controllers
             return jwt;
         }
 
-        //Test Token
-        //[HttpGet("TestToken")]
-        //public IActionResult TestToken()
-        //{
-        //    User user = new User()
-        //    {
-        //        Id = 2, Role = "admin"
-        //    };
-        //    string jwt = CreateJWT(user);
-        //    var response = new
-        //    {
-        //        JWToken = jwt
-        //    };
-        //    return Ok(response);
-        //}
-
-        
     }
 }

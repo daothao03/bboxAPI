@@ -1,0 +1,63 @@
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Nunito", sans-serif;
+}
+
+.content-center {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-page {
+    margin-top: 40px;
+    margin-top: 140px;
+}
+
+.contact__title {
+    color: #1a162e;
+    font-size: 4.2rem;
+
+    font-weight: 700;
+    line-height: 142.857%;
+}
+
+.form-i {
+    color: #ddd;
+}
+
+option {
+    color: #1a162e;
+}
+
+.none {
+    display: none;
+}
+
+.form-text {
+    padding: 10px;
+    height: 100px;
+}
+
+.note {
+    margin-top: 10px;
+    color: #1a162e;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 150%;
+}
+
+.btn-contact {
+    margin-top: 20px;
+    width: 100%;
+}

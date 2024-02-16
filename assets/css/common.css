@@ -1,0 +1,90 @@
+.content {
+    width: 1366px;
+    max-width: calc(100% - 48px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+}
+
+.col-8 {
+    width: 67%;
+}
+
+.col-4 {
+    width: 35%;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    height: 46px;
+    padding: 0 20px;
+    border-radius: 8px;
+
+    background: #f8f8fb;
+
+    font-size: 1.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.btn-primary {
+    color: #171c28;
+    background: #f7aca6;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #d2d1d6;
+}
+
+.btn-rounded {
+    border-radius: 999px;
+}
+
+.button:hover {
+    opacity: 0.9;
+}
+
+.btn-small {
+    height: 40px;
+    padding: 0 16px;
+}
+
+/* =================== Common =================== */
+:root {
+    --primary-color: #f7aca6;
+}
+
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: var(
+        --line-clamp,
+        2
+    ); /*giới hạn số dòng hiển thị khi người dùng tải lên tiêu đề dài, giá trị mặc định là 2 nếu không đăt*/
+    -webkit-box-orient: vertical;
+    overflow: hidden; /*overflow xác định cách hiển thị của phần tử khi bị vượt quá*/
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+button {
+    border: none;
+    background: transparent;
+}
+
+html {
+    font-size: 62.5%;
+}

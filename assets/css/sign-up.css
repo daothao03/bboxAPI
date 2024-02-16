@@ -1,0 +1,144 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Nunito", sans-serif;
+}
+
+button {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+a,
+img,
+button,
+input,
+label,
+textarea,
+select {
+    padding: 0;
+    font-family: inherit;
+    color: inherit;
+    outline: none;
+    border: none;
+}
+
+input,
+textarea {
+    background: transparent;
+}
+
+.auth {
+    display: flex;
+    min-height: 100vh;
+}
+
+.logo-img {
+    margin-top: 20px;
+}
+
+.auth-intro,
+.auth-content {
+    flex: 1;
+}
+
+.auth-intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-content-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: min(460px, 100%);
+    margin: 0 auto;
+}
+
+.auth-heading {
+    margin-top: 30px;
+
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.46; /* 146.667% */
+}
+
+.auth-content-inner .desc {
+    margin-top: 10px;
+
+    padding: 0 30px;
+    color: #9e9da8;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.46; /* 146.667% */
+}
+
+.form {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.form-checkbox-input {
+    width: 18px;
+    height: 18px;
+}
+
+.auth-link {
+    color: #0071dc;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.46; /* 146.667% */
+}
+
+.auth-btn {
+    width: 100%;
+}
+
+.auth-btn:last-child {
+    margin-top: 30px;
+}
+
+.auth-text {
+    margin-top: 50px;
+
+    color: #9e9da8;
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 144.444%;
+}
+
+.auth-text .auth--link {
+    margin-left: 10px;
+    color: #0071dc;
+}
+
+.form__submit-btn {
+    width: 100%;
+}
+
+.auth__message {
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 2px solid green;
+    padding: 8px 10px;
+    background-color: rgb(184, 245, 184);
+}

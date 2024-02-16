@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Favicon -->
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="./assets/favicon/apple-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="./assets/favicon/apple-icon-60x60.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="72x72"
+            href="./assets/favicon/apple-icon-72x72.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="./assets/favicon/apple-icon-76x76.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="./assets/favicon/apple-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="./assets/favicon/apple-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="./assets/favicon/apple-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="./assets/favicon/apple-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/favicon/apple-icon-180x180.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="./assets/favicon/android-icon-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="./assets/favicon/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./assets/favicon/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta
+            name="msapplication-TileImage"
+            content="./assets/favicon/ms-icon-144x144.png"
+        />
+        <meta name="theme-color" content="#ffffff" />
+
+        <!-- RESET CSS -->
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+
+        <!-- Embed fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Fonts awesome -->
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <!-- CSS individual -->
+        <link rel="stylesheet" href="./assets/css/common.css" />
+        <link rel="stylesheet" href="./assets/css/form.css" />
+        <link rel="stylesheet" href="./assets/css/dialog.css" />
+        <link rel="stylesheet" href="./assets/css/admin.css" />
+
+        <title>Admin | BeautyBox</title>
+
+        <script>
+            const $ = document.querySelector.bind(document);
+            const $$ = document.querySelectorAll.bind(document);
+
+            function initJsToggle() {
+                $$(".js-toggle").forEach((button) => {
+                    const target = button.getAttribute("toggle-target");
+                    if (!target) {
+                        document.body.innerText = `Cần thêm toggle-target cho: ${button.outerHTML}`;
+                    }
+                    button.onclick = (e) => {
+                        e.preventDefault();
+
+                        if (!$(target)) {
+                            return (document.body.innerText = `Không tìm thấy phần tử "${target}"`);
+                        }
+                        const isHidden = $(target).classList.contains("hide");
+
+                        requestAnimationFrame(() => {
+                            $(target).classList.toggle("hide", !isHidden);
+                            $(target).classList.toggle("show", isHidden);
+                        });
+                    };
+                    document.onclick = function (e) {
+                        if (!e.target.closest(target)) {
+                            // const isHidden =
+                            //     $(target).classList.contains("hide");
+                            // if (!isHidden) {
+                            //     button.click();
+                            // }
+                        }
+                    };
+                });
+            }
+        </script>
+
+        <!-- <script src="./assets/js/tog-ad.js"></script> -->
+        <!-- <script src="./assets/js/tog-ad.js"></script> -->
+    </head>
+    <body ng-app="AppBanHang" ng-controller="AdminCtrl">
+        <main class="admin">
+            <div class="container">
+                <div class="logo">
+                    <div class="admin-logo">
+                        <!-- <img
+                            src="./assets/img/logo.png"
+                            alt=""
+                            class="admin-logo__img"
+                        /> -->
+                        <!-- <h1>HỆ THỐNG QUẢN TRỊ</h1> -->
+                    </div>
+                    <div class="admin-name">
+                        <!-- <a href="./frofile.html">ĐÀO THẢO</a> -->
+                    </div>
+                </div>
+
+                <div class="admin-content">
+                    <div class="row">
+                        <div class="col--4">
+                            <ul class="list-manager">
+                                <li class="manager-item">
+                                    <div class="manager-item__link">
+                                        <img
+                                            src="./assets/img/tick.svg"
+                                            alt=""
+                                            class="manager-item__img"
+                                        />
+                                        Quản lý
+                                    </div>
+                                    <ul class="list-manager__item">
+                                        <li href="./qlSP.html" class="manager-items manager-items-current">
+                                            Quản lý sản phẩm
+                                        </li>
+                                        <li class="manager-items">
+                                            Quản lý tài khoản
+                                        </li>
+                                        <li class="manager-items">
+                                            Quản lý liên hệ
+                                        </li>
+                                        <li class="manager-items">
+                                            Quản lý đơn hàng
+                                        </li>
+                                        <li class="manager-items">
+                                            Quản lý nhà cung cấp
+                                        </li>
+                                        <li class="manager-items">
+                                            Quản lý tin tức
+                                        </li>
+
+                                        <li class="manager-items">Thống kê</li>
+                                    </ul>
+                                </li>
+                                <li class="manager-item">
+                                    <div class="manager-item__link">
+                                        <img
+                                            src="./assets/img/log-out.svg"
+                                            alt=""
+                                            class="manager-item__img"
+                                        />
+                                        <a href="./sign-up.html">Đăng xuất</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col--8">
+                            <div class="manager">
+                                
+                                <!-- quản lý sản phẩm -->
+                                <div class="manager-content manager-content-current">
+                                    <h2 class="heading">QUẢN LÝ SẢN PHẨM</h2>
+                                    <div class="manager-ctrl">
+                                        <form action="/beaty-box-cosmetic/admin.html" method="get" class="form">
+                                            <div class="form-group">
+                                                <div class="form-text-input">
+                                                    <input
+                                                        type="text"
+                                                        name="search"
+                                                        placeholder="Tìm kiếm"
+                                                        class="form-input"
+                                                    />
+
+                                                    <button type="submit" style="background-color: aqua;">
+                                                        <img
+                                                        src="./assets/img/search.svg"
+                                                        alt=""
+                                                        class="input-form-icon"
+                                                    />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <button
+                                            onclick="initJsToggle()"
+                                            class="btn-create button btn-primary btn-rounded js-toggle"
+                                            toggle-target="#add-prod"
+                                            
+                                        >
+                                            <img
+                                                src="./assets/img/plus.svg"
+                                                alt=""
+                                            />
+                                            Create
+                                        </button>
+                                    </div>
+                                    <table class="table-manager__content">
+                                        <tr>
+                                            <th style="width: 30px">ID</th>
+                                            <th>Name</th>
+                                            <th>Brand</th>
+                                            <th>Category</th>
+                                            <th>Price</th>
+                                            <th
+                                                class="address"
+                                                style="width: 500px"
+                                            >
+                                                Description
+                                            </th>
+                                            <!-- <th>Quantity</th> -->
+                                            <th>Image</th>
+                                            <th>CreateAt</th>
+                                            <th class="actions">Actions</th>
+                                        </tr>
+                                        <tr ng-repeat="x in timkiem">
+                                            <td>{{x.id}}</td>
+                                            <td>{{x.name}}</td>
+                                            <td>{{x.brand.name}}</td>
+                                            <td>{{x.category.name}}</td>
+                                            <td>{{x.price}}</td>
+                                            <td class="address">
+                                                {{x.description}}
+                                            </td>
+
+                                            <!-- <td>{{x.soLuong}}</td> -->
+                                            <td><img class="img" src="https://localhost:5001/images/productsImage/{{x.imageFileName}}" alt=""></td>
+                                            <td>{{x.createAt}}</td>
+                                            <td class="actions">
+                                                <a href="/beaty-box-cosmetic/admin.html?id={{x.id}}"><img
+                                                    src="./assets/img/delete.svg"
+                                                    alt=""
+                                                    class="actions-delete js-toggle"
+                                                    toggle-target="#delete-prod"
+                                                /></a>
+                                                <button onclick="initJsToggle()"
+                                                    ng-click="getProductID(x.id,x)"
+                                                    class="js-toggle"
+                                                    toggle-target="#update-prod"
+                                                >
+                                                    <img
+                                                        src="./assets/img/update.svg"
+                                                        alt=""
+                                                        class="actions-update"
+                                                    />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    
+                                </div>
+
+                                <!-- quản lý tài khoản -->
+                                <div class="manager-content">
+                                    <h2 class="heading">QUẢN LÝ TÀI KHOẢN</h2>
+                                    <div class="manager-ctrl">
+                                        <form action="" method="get" class="form">
+                                            <div class="form-group">
+                                                <div class="form-text-input">
+                                                    <input
+                                                        type="text"
+                                                        name="tk"
+                                                        placeholder="Tìm kiếm"
+                                                        class="form-input"
+                                                    />
+
+                                                    <button style="background-color: aqua;">
+                                                        <img
+                                                        src="./assets/img/search.svg"
+                                                        alt=""
+                                                        class="input-form-icon"
+                                                    />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <button onclick="initJsToggle()"
+                                            class="btn-create button btn-primary btn-rounded js-toggle"
+                                            toggle-target="#add-acc"
+                                        >
+                                            <img
+                                                src="./assets/img/plus.svg"
+                                                alt=""
+                                            />
+                                            Create
+                                        </button>
+
+                                        <!-- <button onclick="initJsToggle()"
+                                            class="btn-create button btn-primary btn-rounded js-toggle"
+                                            toggle-target="#update-role"
+                                        >
+                                            <img
+                                                src="./assets/img/plus.svg"
+                                                alt=""
+                                            />
+                                            Update Role
+                                        </button> -->
+                                    </div>
+                                    <table class="table-manager__content">
+                                        <tr>
+                                            <th style="width: 30px">ID</th>
+                                            <th>Firstname</th>
+                                            <th>Lastname</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th
+                                                class="address"
+                                                style="width: 500px"
+                                            >
+                                                Address
+                                            </th>
+                                            <th>Role</th>
+                                            <th>CreatedAt</th>
+                                            <th class="actions">Actions</th>
+                                        </tr>
+                                        <tr ng-repeat="y in listUser">
+                                            <td>{{y.id}}</td>
+                                            <td>{{y.firstName}}</td>
+                                            <td>{{y.lastName}}</td>
+                                            <td>{{y.email}}</td>
+                                            <td>{{y.phone}}</td>
+                                            <td class="address">
+                                                {{y.address}}
+                                            </td>
+                                            <td>{{y.role}}</td>
+                                            <td>6/11/2023</td>
+                                            <td class="actions">
+                                                <button onclick="initJsToggle()"
+                                                    ng-click="getUserID(y.id,y)"
+                                                    class="js-toggle"
+                                                    toggle-target="#update-role"
+                                                >
+                                                    <img
+                                                        src="./assets/img/update.svg"
+                                                        alt=""
+                                                        class="actions-update"
+                                                    />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <!-- quản lý liên hệ -->
+                                <div class="manager-content">
+                                    <h2 class="heading">QUẢN LÝ LIÊN HỆ</h2>
+                                    <div class="manager-ctrl">
+                                        <form action="/beaty-box-cosmetic/admin.html" method="get" class="form">
+                                            <div class="form-group">
+                                                <div class="form-text-input">
+                                                    <input
+                                                        type="text"
+                                                        name="lh"
+                                                        placeholder="Tìm kiếm"
+                                                        class="form-input"
+                                                    />
+
+                                                    <button type="submit" style="background-color: aqua;">
+                                                        <img
+                                                        src="./assets/img/search.svg"
+                                                        alt=""
+                                                        class="input-form-icon"
+                                                    />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <table class="table-manager__content">
+                                        <tr>
+                                            <th style="width: 30px">ID</th>
+                                            <th>Firstname</th>
+                                            <th>Lastname</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Subjects</th>
+                                            <th
+                                                class="address"
+                                                style="width: 500px"
+                                            >
+                                                Message
+                                            </th>
+                                            <th>Role</th>
+                                        </tr>
+                                        <tr ng-repeat="z in listContact">
+                                            <td>{{z.id}}</td>
+                                            <td>{{z.firstName}}</td>
+                                            <td>{{z.lastName}}</td>
+                                            <td>{{z.email}}</td>
+                                            <td>{{z.phone}}</td>
+                                            <td>{{z.subject.name}}</td>
+                                            <td class="address">
+                                                {{z.message}}
+                                            </td>
+                                            <td class="actions">
+                                                <img
+                                                    src="./assets/img/delete.svg"
+                                                    alt=""
+                                                    class="actions-delete js-toggle"
+                                                    toggle-target="#delete-contacts"
+                                                />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <!-- quản lý đơn hàng -->
+                                <div class="manager-content">
+                                    <h2 class="heading">QUẢN LÝ ĐƠN HÀNG</h2>
+                                    <div class="manager-ctrl">
+                                        <form action="" class="form">
+                                            <div class="form-group">
+                                                <div class="form-text-input">
+                                                    <input
+                                                        type="text"
+                                                        name=""
+                                                        placeholder="Tìm kiếm"
+                                                        id=""
+                                                        class="form-input"
+                                                    />
+
+                                                    <img
+                                                        src="./assets/img/search.svg"
+                                                        alt=""
+                                                        class="input-form-icon"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <table class="table-manager__content">
+                                        <tr>
+                                            <th style="width: 30px">ID</th>
+                                            <th>UserID</th>
+                                            <th>CreateAt</th>
+                                            <th>Shipping Fee</th>
+                                            <th>PaymentMethod</th>
+                                            <th>PaymentStatuS</th>
+                                            <th>OrderStatus</th>
+                                            <th>ProductId</th>
+                                            <th>Quantity</th>
+                                            <th class="actions">Actions</th>
+                                        </tr>
+                                        <tr ng-repeat="x in listOrder">
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>6/11/2023</td>
+                                            <td>30000</td>
+                                            <td>Đã tiếp nhận</td>
+                                            <td>Đã thanh toán</td>
+                                            <td>Đang chờ gửi hàng</td>
+                                            <td>2</td>
+                                            <td>4</td>
+                                            <td class="actions">
+                                                <img
+                                                    src="./assets/img/delete.svg"
+                                                    alt=""
+                                                    class="actions-delete js-toggle"
+                                                    toggle-target="#delete-order"
+                                                />
+                                                <img
+                                                    src="./assets/img/update.svg"
+                                                    alt=""
+                                                    class="actions-update js-toggle"
+                                                    toggle-target="#update-order"
+                                                />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <!-- quản lý nhà cung cấp -->
+                                <div class="manager-content">
+                                    <h2 class="heading">
+                                        QUẢN LÝ NHÀ CUNG CẤP
+                                    </h2>
+                                    <div class="manager-ctrl">
+                                        <form action="" class="form">
+                                            <div class="form-group">
+                                                <div class="form-text-input">
+                                                    <input
+                                                        type="text"
+                                                        name=""
+                                                        placeholder="Tìm kiếm"
+                                                        id=""
+                                                        class="form-input"
+                                                    />
+
+                                                    <img
+                                                        src="./assets/img/search.svg"
+                                                        alt=""
+                                                        class="input-form-icon"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <button onclick="initJsToggle()"
+                                            class="btn-create button btn-primary btn-rounded js-toggle"
+                                            toggle-target="#add-ncc"
+                                        >
+                                            <img
+                                                src="./assets/img/plus.svg"
+                                                alt=""
+                                            />
+                                            Create
+                                        </button>
+                                    </div>
+                                    <table class="table-manager__content">
+                                        <tr>
+                                            <th style="width: 30px">ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th
+                                                class="address"
+                                                style="width: 500px"
+                                            >
+                                                Address
+                                            </th>
+                                            <th>SDT</th>
+                                            <th class="actions">Actions</th>
+                                        </tr>
+                                        <tr ng-repeat="i in listNCC">
+                                            <td>{{i.id}}</td>
+                                            <td>{{i.name}}</td>
+                                            <td>{{i.email}}</td>
+                                            <td class="address">
+                                                {{i.address}}
+                                            </td>
+                                            <td>{{i.sdt}}</td>
+
+                                            <td class="actions">
+                                                <img
+                                                    src="./assets/img/delete.svg"
+                                                    alt=""
+                                                    class="actions-delete js-toggle"
+                                                    toggle-target="#delete-ncc"
+                                                />
+                                                <img
+                                                    src="./assets/img/update.svg"
+                                                    alt=""
+                                                    class="actions-update js-toggle"
+                                                    toggle-target="#update-ncc"
+                                                />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <!-- quản lý tin tức -->
+                                <div class="manager-content">
+                                    <h2 class="heading">QUẢN LÝ TIN TỨC</h2>
+                                    <div class="manager-ctrl">
+                                        <form action="" class="form">
+                                            <div class="form-group">
+                                                <div class="form-text-input">
+                                                    <input
+                                                        type="text"
+                                                        name="tintuc"
+                                                        placeholder="Tìm kiếm"
+                                                        id=""
+                                                        class="form-input"
+                                                    />
+
+                                                    <img
+                                                        src="./assets/img/search.svg"
+                                                        alt=""
+                                                        class="input-form-icon"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- <button
+                                            class="btn-create button btn-primary btn-rounded"
+                                        >
+                                            <img
+                                                src="./assets/img/plus.svg"
+                                                alt=""
+                                            />
+                                            Create
+                                        </button> -->
+                                    </div>
+                                    <table class="table-manager__content">
+                                        <tr>
+                                            <th style="width: 30px">ID</th>
+                                            <th>Title</th>
+                                            <th>Content</th>
+                                            <th>Image</th>
+                                            <th class="actions">Actions</th>
+                                        </tr>
+                                        <tr ng-repeat="y in listBlogs">
+                                            <td>{{y.id}}</td>
+                                            <td>{{y.title}}</td>
+                                            <td>{{y.content}}</td>
+                                            <td><img class="img" src="https://localhost:5001/images/blogsImage/{{y.imageFileName}}" alt=""></td>
+                                            <td class="actions">
+                                                <button
+                                                    class="js-toggle"
+                                                    toggle-target="#update-profile"
+                                                >
+                                                    <img
+                                                        src="./assets/img/update.svg"
+                                                        alt=""
+                                                        class="actions-update"
+                                                    />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <!-- thống kê -->
+                                <div class="manager-content">
+                                    <h2 class="heading heading-satis">
+                                        THỐNG KÊ
+                                    </h2>
+                                    <input
+                                        type="date"
+                                        name=""
+                                        id=""
+                                        class="input-date"
+                                    />
+
+                                    <div class="statistical">
+                                        <div class="statis statis-dthu">
+                                            <div class="qty-statis">
+                                                <span class="icon">
+                                                    <i
+                                                        class="fa-solid fa-shop"
+                                                    ></i
+                                                    >Doanh thu</span
+                                                >
+                                                <span class="qty">{{DoanhThu.total}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="statis statis-hd">
+                                            <div class="qty-statis">
+                                                <span class="icon"
+                                                    ><i
+                                                        class="fa-solid fa-money-bill"
+                                                    ></i
+                                                    >Hóa đơn</span
+                                                >
+                                                <span class="qty">{{TongHoaDon}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="statis statis-client">
+                                            <div class="qty-statis">
+                                                <span class="icon"
+                                                    ><i
+                                                        class="fa-solid fa-person-military-pointing"
+                                                    ></i
+                                                    >Khách hàng</span
+                                                >
+                                                <span class="qty">{{TongKhachHang}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="statis statis-user">
+                                            <div class="qty-statis">
+                                                <span class="icon"
+                                                    ><i
+                                                        class="fa-solid fa-user"
+                                                    ></i
+                                                    >Member online</span
+                                                >
+                                                <span class="qty">{{TongUser}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="statis statis-prod">
+                                            <div class="qty-statis">
+                                                <span class="icon"
+                                                    ><i
+                                                        class="fa-brands fa-product-hunt"
+                                                    ></i
+                                                    >Sản phẩm bán ra</span
+                                                >
+                                                <span class="qty">{{TongSanPham}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Thêm sản phẩm -> f-->
+        <div id="add-prod" class="dialog modal-large hide">
+            <div class="dialog__content">
+                <div class="modal-body">
+                    <h2 class="heading">Thêm sản phẩm</h2>
+                    <form ng-submit="submitFormAddProduct()" class="form" method="post" enctype="multipart/form-data">
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name="Name"
+                                        placeholder="Name"
+                                        ng-model="formData.Name"
+                                        id="name"
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    
+                                    <select ng-model="formData.BrandID" name="BrandID" class="form-input form-i">
+                                        <option ng-repeat="i in brand" value="{{i.id}}">{{i.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <select ng-model="formData.CategoryID" name="CategoryID" class="form-input form-i">
+                                        <option ng-repeat="z in listCategory" value="{{z.id}}">{{z.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input 
+                                        type="number"
+                                        name="Price"
+                                        ng-model="formData.Price"
+                                        placeholder="Price"
+                                        id="price"
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <textarea 
+                                        name="Description"
+                                        id="description"
+                                        ng-model="formData.Description"
+                                        placeholder="Description"
+                                        cols="30"
+                                        rows="30"
+                                        class="form-input textarea-input"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name="SoLuong"
+                                        placeholder="Số lượng"
+                                        ng-model="formData.SoLuong"
+                                        id="qty"
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <span>Ảnh sản phẩm</span>
+                                <div class="form-text-input">
+                                    <input 
+                                        type="file"
+                                        class="form-input"
+                                        demo-file-model="imageEvent"
+                                        placeholder="Ảnh sản phẩm"
+                                    />
+                                    {{imageEvent}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dialog__bottom">
+                            <button
+                                class="button btn-small btn-text dialog__btn js-toggle"
+                                toggle-target="#add-prod"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                            type="submit"
+                                class="button btn-small btn-primary dialog__btn">
+                                Add
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="dialog__overlay"></div>
+        </div>
+
+        <!-- Sửa sản phẩm -> f-->
+        <div id="update-prod" class="dialog modal-large hide">
+            <div class="dialog__content">
+                <div class="modal-body">
+                    <h2 class="heading">Sửa sản phẩm</h2>
+                    <form class="form" method="POST" enctype="multipart/form-data">
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name="Name"
+                                        placeholder="Name"
+                                        ng-model="formDataEdit.Name"
+                                        id="name"
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">  
+                                    <select ng-model="formDataEdit.BrandID" name="BrandID" class="form-input form-i">
+                                        <option ng-repeat="i in brand" value="{{i.id}}">{{i.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <select ng-model="formDataEdit.CategoryID" name="CategoryID" class="form-input form-i">
+                                        <option ng-repeat="z in listCategory" value="{{z.id}}">{{z.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input 
+                                        type="number"
+                                        name="Price"
+                                        ng-model="formDataEdit.Price"
+                                        placeholder="Price"
+                                        id="price"
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    {{productEdit.description}}
+                                    <textarea 
+                                        name="Description"
+                                        id="description"
+                                        ng-model="formDataEdit.Description"
+                                        placeholder="Description"
+                                        cols="30"
+                                        rows="30"
+                                        class="form-input textarea-input"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name="SoLuong"
+                                        placeholder="Số lượng"
+                                        ng-model="formDataEdit.SoLuong"
+                                        id="qty"
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <span>Ảnh sản phẩm</span>
+                                <div class="form-text-input">
+                                    <input 
+                                        type="file"
+                                        class="form-input"
+                                        demo-file-model="myFile"
+                                        placeholder="Ảnh sản phẩm"
+                                    />
+                                    {{imageEvent}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dialog__bottom">
+                            <button
+                                class="button btn-small btn-text dialog__btn js-toggle"
+                                toggle-target="#update-prod"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="button"
+                                ng-click="submitFormEditProduct()"
+                                class="button btn-small btn-primary dialog__btn" >
+                                Update
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+
+            <div class="dialog__overlay"></div>
+        </div>
+
+        <!-- Xác nhận xóa sản phẩm-->
+        <div id="delete-prod" class="dialog modal-small hide">
+            <div class="dialog__content">
+                <div class="dialog__text">
+                    Do you want to delete this product?
+                </div>
+                <div class="dialog__bottom">
+                    <button
+                        class="button btn-small btn-text dialog__btn js-toggle"
+                        toggle-target="#delete-prod"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        class="button btn-small btn-primary dialog__btn"                       
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
+
+            <div
+                class="dialog__overlay js-toggle"
+                toggle-target="#delete-confirm"
+            ></div>
+        </div>
+
+        <!-- Thêm tài khoản / Đăng ký -> f-->
+        <div id="add-acc" class="dialog modal-large hide">
+            <div class="dialog__content">
+                <div class="modal-body">
+                    <h2 class="heading">Thêm tài khoản</h2>
+                    <form class="form" method="post">
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name="firstName"
+                                        placeholder="Firstname"
+                                        ng-model="formDataAccount.firstName"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name="lastName"
+                                        ng-model="formDataAccount.lastName"
+                                        placeholder="Lastname"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="Email"
+                                        ng-model="formDataAccount.email"
+                                        id=""
+                                        required
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name="phone"
+                                        ng-model="formDataAccount.phone"
+                                        placeholder="Phone"
+                                        id=""
+                                        required
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-text-input">
+                                <textarea
+                                    name="address"
+                                    id=""
+                                    ng-model="formDataAccount.address"
+                                    placeholder="Address"
+                                    cols="30"
+                                    rows="30"
+                                    required
+                                    class="form-input textarea-input"
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        placeholder="Password"
+                                        ng-model="formDataAccount.password"
+                                        id=""
+                                        required
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dialog__bottom">
+                            <button
+                                class="button btn-small btn-text dialog__btn js-toggle"
+                                toggle-target="#add-acc"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                class="button btn-small btn-primary dialog__btn "
+                                ng-click="submitFormAddAccount()"
+                                type="button"
+                            >
+                                Confirm
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+
+            <div class="dialog__overlay"></div>
+        </div>
+
+        <!-- Sửa tài khoản / update profile-->
+        <!-- <div id="update-profile" class="dialog modal-small hide">
+            <div class="dialog__content">
+                <div class="modal-body">
+                    <h2 class="heading">Sửa tài khoản</h2>
+                    <form action="" class="form">
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name=""
+                                        placeholder="Firstname"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name=""
+                                        placeholder="Lastname"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="email"
+                                        name=""
+                                        placeholder="Email"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name=""
+                                        placeholder="Phone"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-text-input">
+                                <textarea
+                                    name=""
+                                    id=""
+                                    placeholder="Address"
+                                    cols="30"
+                                    rows="30"
+                                    class="form-input textarea-input"
+                                ></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="dialog__bottom">
+                    <button
+                        class="button btn-small btn-text dialog__btn js-toggle"
+                        toggle-target="#update-profile"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        class="button btn-small btn-primary dialog__btn js-toggle"
+                        toggle-target="#update-profile"
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
+
+            <div class="dialog__overlay"></div>
+        </div> -->
+
+        <!-- Sửa tài khoản / update quyền người dùng / Quản lý nhân viên-> f-->
+        <div id="update-role" class="dialog modal-small hide">
+            <div class="dialog__content">
+                <div class="modal-body">
+                    <h2 class="heading">Update quyền người dùng</h2>
+                    <form method="post" class="form">
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name=""
+                                        placeholder="ID"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name="role"
+                                        ng-model="formUserEdit.role"
+                                        placeholder="client/admin"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="dialog__bottom">
+                    <button
+                        class="button btn-small btn-text dialog__btn js-toggle"
+                        toggle-target="#update-role"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        class="button btn-small btn-primary dialog__btn js-toggle"
+                        toggle-target="#update-role"
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
+
+            <div class="dialog__overlay"></div>
+        </div>
+
+        <!-- Xác nhận xóa liên hệ -> f -->
+        <div id="delete-contacts" class="dialog modal-small hide">
+            <div class="dialog__content">
+                <div class="dialog__text">
+                    Do you want to delete this contact?
+                </div>
+                <div class="dialog__bottom">
+                    <button
+                        class="button btn-small btn-text dialog__btn js-toggle"
+                        toggle-target="#delete-contacts"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        class="button btn-small btn-primary dialog__btn js-toggle"
+                        toggle-target="#delete-contacts"
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
+
+            <div
+                class="dialog__overlay js-toggle"
+                toggle-target="#delete-confirm"
+            ></div>
+        </div>
+
+        <!-- Xác nhận xóa đơn hàng -->
+        <div id="delete-order" class="dialog modal-small hide">
+            <div class="dialog__content">
+                <div class="dialog__text">
+                    Do you want to delete this orders?
+                </div>
+                <div class="dialog__bottom">
+                    <button
+                        class="button btn-small btn-text dialog__btn js-toggle"
+                        toggle-target="#delete-order"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        class="button btn-small btn-primary dialog__btn js-toggle"
+                        toggle-target="#delete-order"
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
+
+            <div
+                class="dialog__overlay js-toggle"
+                toggle-target="#delete-confirm"
+            ></div>
+        </div>
+
+        <!-- Sửa đơn hàng -->
+        <div id="update-order" class="dialog modal-small hide">
+            <div class="dialog__content">
+                <div class="modal-body">
+                    <h2 class="heading">Sửa trạng thái đơn hàng</h2>
+                    <form action="" class="form">
+                        <div class="form-group">
+                            <div class="form-text-input">
+                                <select name="" class="form-input form-i">
+                                    <option value="" class="none">
+                                        Trạng thái thanh toán
+                                    </option>
+                                    <option value="">Chưa thanh toán</option>
+
+                                    <option value="">Đã thanh toán</option>
+
+                                    <option value="">Đã hủy</option>
+
+                                    <option>Khác</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="form-text-input">
+                                <select name="" class="form-input form-i">
+                                    <option value="" class="none">
+                                        Trạng thái đơn hàng
+                                    </option>
+                                    <option value="">Đã tạo đơn</option>
+
+                                    <option value="">Đã xác nhận</option>
+
+                                    <option value="">Đã hủy</option>
+
+                                    <option>Đã vận chuyển</option>
+                                    <option>Đã giao</option>
+                                    <option>Đã hoàn trả</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="dialog__bottom">
+                    <button
+                        class="button btn-small btn-text dialog__btn js-toggle"
+                        toggle-target="#update-order"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        class="button btn-small btn-primary dialog__btn js-toggle"
+                        toggle-target="#update-order"
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
+
+            <div class="dialog__overlay"></div>
+        </div>
+
+        <!-- Thêm nhà cung cấp -> f -->
+        <div id="add-ncc" class="dialog modal-small hide">
+            <div class="dialog__content">
+                <div class="modal-body">
+                    <h2 class="heading">Thêm nhà cung cấp</h2>
+                    <form action="" class="form">
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name=""
+                                        placeholder="Name"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="email"
+                                        name=""
+                                        placeholder="Email"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-text-input">
+                                <textarea
+                                    name=""
+                                    id=""
+                                    placeholder="Address"
+                                    cols="30"
+                                    rows="30"
+                                    class="form-input textarea-input"
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name=""
+                                        placeholder="Số điện thoại"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="dialog__bottom">
+                    <button
+                        class="button btn-small btn-text dialog__btn js-toggle"
+                        toggle-target="#add-ncc"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        class="button btn-small btn-primary dialog__btn js-toggle"
+                        toggle-target="#add-ncc"
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
+
+            <div class="dialog__overlay"></div>
+        </div>
+
+        <!-- Sửa nhà cung cấp -->
+        <div id="update-ncc" class="dialog modal-small hide">
+            <div class="dialog__content">
+                <div class="modal-body">
+                    <h2 class="heading">Sửa nhà cung cấp</h2>
+                    <form action="" class="form">
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name=""
+                                        placeholder="Name"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="email"
+                                        name=""
+                                        placeholder="Email"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-text-input">
+                                <textarea
+                                    name=""
+                                    id=""
+                                    placeholder="Address"
+                                    cols="30"
+                                    rows="30"
+                                    class="form-input textarea-input"
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name=""
+                                        placeholder="Số điện thoại"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="dialog__bottom">
+                    <button
+                        class="button btn-small btn-text dialog__btn js-toggle"
+                        toggle-target="#update-ncc"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        class="button btn-small btn-primary dialog__btn js-toggle"
+                        toggle-target="#update-ncc"
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
+
+            <div class="dialog__overlay"></div>
+        </div>
+
+        <!-- Xác nhận xóa nhà cung cấp -->
+        <div id="delete-ncc" class="dialog modal-small hide">
+            <div class="dialog__content">
+                <div class="dialog__text">
+                    Do you want to delete this supplier?
+                </div>
+                <div class="dialog__bottom">
+                    <button
+                        class="button btn-small btn-text dialog__btn js-toggle"
+                        toggle-target="#delete-ncc"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        class="button btn-small btn-primary dialog__btn js-toggle"
+                        toggle-target="#delete-ncc"
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
+
+            <div
+                class="dialog__overlay js-toggle"
+                toggle-target="#delete-confirm"
+            ></div>
+        </div>
+
+        <script src="./assets/js/admin.js"></script>
+        <script src="./assets/angular/angular.min.js"></script>
+        <script src="./assets/angular/global.js"></script>
+        <script src="./assets/angular/admin.js"></script>
+        <!-- <script src="./assets/angular/addProduct.js"></script> -->
+    </body>
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Favicon -->
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="./assets/favicon/apple-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="./assets/favicon/apple-icon-60x60.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="72x72"
+            href="./assets/favicon/apple-icon-72x72.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="./assets/favicon/apple-icon-76x76.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="./assets/favicon/apple-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="./assets/favicon/apple-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="./assets/favicon/apple-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="./assets/favicon/apple-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/favicon/apple-icon-180x180.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="./assets/favicon/android-icon-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="./assets/favicon/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./assets/favicon/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta
+            name="msapplication-TileImage"
+            content="./assets/favicon/ms-icon-144x144.png"
+        />
+        <meta name="theme-color" content="#ffffff" />
+
+        <!-- RESET CSS -->
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+
+        <!-- Embed fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Fonts awesome -->
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <!-- CSS individual -->
+        <link rel="stylesheet" href="./assets/css/common.css" />
+        <link rel="stylesheet" href="./assets/css/form.css" />
+        <link rel="stylesheet" href="./assets/css/dialog.css" />
+        <link rel="stylesheet" href="./assets/css/admin.css" />
+
+        <title>Admin | BeautyBox</title>
+
+        <script>
+            const $ = document.querySelector.bind(document);
+            const $$ = document.querySelectorAll.bind(document);
+
+            function initJsToggle() {
+                $$(".js-toggle").forEach((button) => {
+                    const target = button.getAttribute("toggle-target");
+                    if (!target) {
+                        document.body.innerText = `Cần thêm toggle-target cho: ${button.outerHTML}`;
+                    }
+                    button.onclick = (e) => {
+                        e.preventDefault();
+
+                        if (!$(target)) {
+                            return (document.body.innerText = `Không tìm thấy phần tử "${target}"`);
+                        }
+                        const isHidden = $(target).classList.contains("hide");
+
+                        requestAnimationFrame(() => {
+                            $(target).classList.toggle("hide", !isHidden);
+                            $(target).classList.toggle("show", isHidden);
+                        });
+                    };
+                    document.onclick = function (e) {
+                        if (!e.target.closest(target)) {
+                            // const isHidden =
+                            //     $(target).classList.contains("hide");
+                            // if (!isHidden) {
+                            //     button.click();
+                            // }
+                        }
+                    };
+                });
+            }
+        </script>
+
+        <!-- <script src="./assets/js/tog-ad.js"></script> -->
+        <!-- <script src="./assets/js/tog-ad.js"></script> -->
+    </head>
+    <body ng-app="AppBanHang" ng-controller="AdminCtrl">
+        <main class="admin">
+            <div class="container">
+                <div class="logo">
+                    <div class="admin-logo">
+                        <img
+                            src="./assets/img/logo.png"
+                            alt=""
+                            class="admin-logo__img"
+                        />
+                    </div>
+                    <div class="admin-name">
+                        <a href="./frofile.html">ĐÀO THẢO</a>
+                    </div>
+                </div>
+
+                <div class="admin-content">
+                    <div class="row">
+                        <div class="col--4">
+                            
+                        </div>
+
+                        <div class="col--8">
+                            <div class="manager">                               
+                                <!-- quản lý sản phẩm -->
+                                <div class="manager-content">
+                                    <h2 class="heading">QUẢN LÝ SẢN PHẨM</h2>
+                                    <div class="manager-ctrl">
+                                        <form action="./qlSP.html" method="get" class="form">
+                                            <div class="form-group">
+                                                <div class="form-text-input">
+                                                    <input
+                                                        type="text"
+                                                        name="search"
+                                                        placeholder="Tìm kiếm"
+                                                        class="form-input"
+                                                    />
+
+                                                    <button type="submit" style="background-color: aqua;">
+                                                        <img
+                                                        src="./assets/img/search.svg"
+                                                        alt=""
+                                                        class="input-form-icon"
+                                                    />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <button
+                                            onclick="initJsToggle()"
+                                            class="btn-create button btn-primary btn-rounded js-toggle"
+                                            toggle-target="#add-prod"
+                                            
+                                        >
+                                            <img
+                                                src="./assets/img/plus.svg"
+                                                alt=""
+                                            />
+                                            Create
+                                        </button>
+                                    </div>
+                                    <table class="table-manager__content">
+                                        <tr>
+                                            <th style="width: 30px">ID</th>
+                                            <th>Name</th>
+                                            <th>Brand</th>
+                                            <th>Category</th>
+                                            <th>Price</th>
+                                            <th
+                                                class="address"
+                                                style="width: 500px"
+                                            >
+                                                Description
+                                            </th>
+                                            <!-- <th>Quantity</th> -->
+                                            <th>Image</th>
+                                            <th>CreateAt</th>
+                                            <th class="actions">Actions</th>
+                                        </tr>
+                                        <tr ng-repeat="x in timkiem">
+                                            <td>{{x.id}}</td>
+                                            <td>{{x.name}}</td>
+                                            <td>{{x.brand.name}}</td>
+                                            <td>{{x.category.name}}</td>
+                                            <td>{{x.price}}</td>
+                                            <td class="address">
+                                                {{x.description}}
+                                            </td>
+
+                                            <!-- <td>{{x.soLuong}}</td> -->
+                                            <td><img class="img" src="https://localhost:5001/images/productsImage/{{x.imageFileName}}" alt=""></td>
+                                            <td>{{x.createAt}}</td>
+                                            <td class="actions">
+                                                <a href="/beaty-box-cosmetic/admin.html?id={{x.id}}"><img
+                                                    src="./assets/img/delete.svg"
+                                                    alt=""
+                                                    class="actions-delete js-toggle"
+                                                    toggle-target="#delete-prod"
+                                                /></a>
+                                                <!-- <button
+                                                    class="js-toggle"
+                                                    toggle-target="#update-prod"
+                                                >
+                                                    <img
+                                                        src="./assets/img/update.svg"
+                                                        alt=""
+                                                        class="actions-update"
+                                                    />
+                                                </button> -->
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Thêm sản phẩm -> f-->
+        <div id="add-prod" class="dialog modal-small hide">
+            <div class="dialog__content">
+                <div class="modal-body">
+                    <h2 class="heading">Thêm sản phẩm</h2>
+                    <form ng-submit="submitFormAddProduct()" class="form" method="post" enctype="multipart/form-data">
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name="Name"
+                                        placeholder="Name"
+                                        ng-model="formData.Name"
+                                        id="name"
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    
+                                    <select ng-model="formData.BrandID" name="BrandID" class="form-input form-i">
+                                        <option ng-repeat="i in brand" value="{{i.id}}">{{i.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <select ng-model="formData.CategoryID" name="CategoryID" class="form-input form-i">
+                                        <option ng-repeat="z in listCategory" value="{{z.id}}">{{z.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input 
+                                        type="number"
+                                        name="Price"
+                                        ng-model="formData.Price"
+                                        placeholder="Price"
+                                        id="price"
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <textarea 
+                                        name="Description"
+                                        id="description"
+                                        ng-model="formData.Description"
+                                        placeholder="Description"
+                                        cols="30"
+                                        rows="30"
+                                        class="form-input textarea-input"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name="SoLuong"
+                                        placeholder="Số lượng"
+                                        ng-model="formData.SoLuong"
+                                        id="qty"
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <span>Ảnh sản phẩm</span>
+                                <div class="form-text-input">
+                                    <input 
+                                        type="file"
+                                        class="form-input"
+                                        demo-file-model="imageEvent"
+                                        placeholder="Ảnh sản phẩm"
+                                    />
+                                    {{imageEvent}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dialog__bottom">
+                            <button
+                                class="button btn-small btn-text dialog__btn js-toggle"
+                                toggle-target="#add-prod"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                            type="submit"
+                                class="button btn-small btn-primary dialog__btn">
+                                Add
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="dialog__overlay"></div>
+        </div>
+
+        <!-- Sửa sản phẩm -> f-->
+        <div id="update-prod" class="dialog modal-small hide">
+            <div class="dialog__content">
+                <div class="modal-body">
+                    <h2 class="heading">Sửa sản phẩm</h2>
+                    <form class="form" method="put" enctype="multipart/form-data">
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name="Name"
+                                        placeholder="Name"
+                                        
+                                        id="name"
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    
+                                    <select name="BrandID" class="form-input form-i">
+                                        <option ng-repeat="i in brand" value="{{i.id}}">{{i.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <select name="CategoryID" class="form-input form-i">
+                                        <option ng-repeat="z in listCategory" value="{{z.id}}">{{z.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input 
+                                        type="number"
+                                        name="Price"
+                                        
+                                        placeholder="Price"
+                                        id="price"
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <textarea 
+                                        name="Description"
+                                        id="description"
+                                        
+                                        placeholder="Description"
+                                        cols="30"
+                                        rows="30"
+                                        class="form-input textarea-input"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name="SoLuong"
+                                        placeholder="Số lượng"
+                                        
+                                        id="qty"
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <span>Ảnh sản phẩm</span>
+                                <div class="form-text-input">
+                                    <input 
+                                        type="file"
+                                        class="form-input"
+                                        
+                                        placeholder="Ảnh sản phẩm"
+                                    />
+                                    {{imageEvent}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dialog__bottom">
+                            <button
+                                class="button btn-small btn-text dialog__btn js-toggle"
+                                toggle-target="#add-prod"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                            type="submit"
+                                class="button btn-small btn-primary dialog__btn">
+                                Update
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+
+            <div class="dialog__overlay"></div>
+        </div>
+
+        <!-- Xác nhận xóa sản phẩm-->
+        <div id="delete-prod" class="dialog modal-small hide">
+            <div class="dialog__content">
+                <div class="dialog__text">
+                    Do you want to delete this product?
+                </div>
+                <div class="dialog__bottom">
+                    <button
+                        class="button btn-small btn-text dialog__btn js-toggle"
+                        toggle-target="#delete-prod"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        class="button btn-small btn-primary dialog__btn"                       
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
+
+            <div
+                class="dialog__overlay js-toggle"
+                toggle-target="#delete-confirm"
+            ></div>
+        </div>
+
+        <!-- <script src="./assets/js/admin.js"></script> -->
+        <script src="./assets/angular/angular.min.js"></script>
+        <script src="./assets/angular/global.js"></script>
+        <!-- <script src="./assets/angular/admin.js"></script> -->
+        <!-- <script src="./assets/angular/addProduct.js"></script> -->
+    </body>
+</html>

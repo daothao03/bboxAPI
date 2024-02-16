@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html  lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Favicon -->
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="./assets/favicon/apple-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="./assets/favicon/apple-icon-60x60.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="72x72"
+            href="./assets/favicon/apple-icon-72x72.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="./assets/favicon/apple-icon-76x76.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="./assets/favicon/apple-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="./assets/favicon/apple-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="./assets/favicon/apple-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="./assets/favicon/apple-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/favicon/apple-icon-180x180.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="./assets/favicon/android-icon-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="./assets/favicon/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./assets/favicon/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta
+            name="msapplication-TileImage"
+            content="./assets/favicon/ms-icon-144x144.png"
+        />
+        <meta name="theme-color" content="#ffffff" />
+
+        <!-- RESET CSS -->
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+
+        <!-- Embed fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Fonts awesome -->
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <!-- CSS individual -->
+        <link rel="stylesheet" href="./assets/css/header.css" />
+        <link rel="stylesheet" href="./assets/css/footer.css" />
+        <link rel="stylesheet" href="./assets/css/common.css" />
+        <link rel="stylesheet" href="./assets/css/text-content.css" />
+        <link rel="stylesheet" href="./assets/css/breadcumbs.css" />
+        <link rel="stylesheet" href="./assets/css/product-detail.css" />
+
+        <script src="./assets/js/scripts.js"></script>
+        <script src="./assets/angular/angular.min.js"></script>
+        <script src="./assets/angular/global.js"></script>
+        <script src="./assets/angular/prod-detail.js"></script>
+
+        <title>Beauty Box</title>
+    </head>
+    <body ng-app="AppBanHang" ng-Controller="HomeCtrl">
+        <!-- Header -->
+        <header id="header" class="header"></header>
+        <script>
+            load("#header", "./template/header-login.html");
+        </script>
+
+        <main class="product-page">
+            <div class="content">
+                <!-- Breadcumbs -->
+                <div class="product-container">
+                    <!-- Breadcumbs -->
+                    <ul class="breadcumbs">
+                        <li class="breadcumbs-item">
+                            <a href="./index.html" class="breadcumbs-link">
+                                Trang chủ
+                                <img
+                                    src="./assets/img/crow-p.svg"
+                                    alt=""
+                                    class="breadcumbs-icon"
+                                />
+                            </a>
+                        </li>
+                        <li class="breadcumbs-item">
+                            <a href="#!" class="breadcumbs-link">
+                                Chăm sóc da mặt
+                                <img
+                                    src="./assets/img/crow-p.svg"
+                                    alt=""
+                                    class="breadcumbs-icon"
+                                />
+                            </a>
+                        </li>
+                        <li class="breadcumbs-item">
+                            <a href="#!" class="breadcumbs-link">
+                                AHC
+                                <img
+                                    src="./assets/img/crow-p.svg"
+                                    alt=""
+                                    class="breadcumbs-icon"
+                                />
+                            </a>
+                        </li>
+                        <li class="breadcumbs-item">
+                            <a
+                                href="#!"
+                                class="breadcumbs-link breadcumbs-link-current"
+                            >
+                                Tinh chất dưỡng AHC
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Product info -->
+                <div class="product-container prod-ctrl" data-key="1">
+                    <div class="product-preview">
+                        <div class="prod-preview__list">
+                            <div class="prod-preview__item">
+                                <img
+                                    src="https://localhost:5001/images/productsImage/{{listProdDetail.imageFileName}}"
+                                    alt=""
+                                    class="prod-preview__img"
+                                />
+                                
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <section class="prod-info">
+                            <a href="#!" class="prod-link">{{listProdDetail.brand.name}}</a>
+                            <h1 class="prod-heading">
+                                {{listProdDetail.name}}
+                            </h1>
+
+                            <div class="prod-review">
+                                <div class="prod-star">
+                                    <img
+                                        src="./assets/img/star.svg"
+                                        alt=""
+                                        class="prod-review-img"
+                                    />
+                                    <img
+                                        src="./assets/img/star.svg"
+                                        alt=""
+                                        class="prod-review-img"
+                                    />
+                                    <img
+                                        src="./assets/img/star.svg"
+                                        alt=""
+                                        class="prod-review-img"
+                                    />
+                                    <img
+                                        src="./assets/img/star.svg"
+                                        alt=""
+                                        class="prod-review-img"
+                                    />
+                                    <img
+                                        src="./assets/img/star.svg"
+                                        alt=""
+                                        class="prod-review-img"
+                                    />
+                                </div>
+                                <div class="prod-origin">
+                                    <span>Xuất xứ: </span>
+                                    Hàn Quốc
+                                </div>
+                            </div>
+
+                            <span class="price">{{listProdDetail.price}}</span>
+
+                            <div class="prod-choose-delivery">
+                                <div class="prod-deli">
+                                    <div class="prod-choose">
+                                        <img
+                                            src="./assets/img/cart.svg"
+                                            alt=""
+                                            class="prod-choose-img"
+                                        />
+                                        <span>Giao hàng</span>
+                                    </div>
+
+                                    <div class="prod-choose">
+                                        <img
+                                            src="./assets/img/pick-up.svg"
+                                            alt=""
+                                            class="prod-choose-img"
+                                        />
+                                        <span>Mua và lấy tại cửa hàng</span>
+                                    </div>
+
+                                    <div class="prod-choose">
+                                        <img
+                                            src="./assets/img/cart.svg"
+                                            alt=""
+                                            class="prod-choose-img"
+                                        />
+                                        <span
+                                            >Nhận HSV Point cho mỗi lần
+                                            mua</span
+                                        >
+                                    </div>
+                                </div>
+                                <div class="prod-dis">
+                                    <div class="prod-choose">
+                                        <img
+                                            src="./assets/img/star.svg"
+                                            alt=""
+                                            class="prod-choose-img"
+                                        />
+                                        <span>Cam kết hàng chính hãng</span>
+                                    </div>
+
+                                    <div class="prod-choose">
+                                        <img
+                                            src="./assets/img/pick-up.svg"
+                                            alt=""
+                                            class="prod-choose-img"
+                                        />
+                                        <span>Đổi/ trả trong vòng 7 ngày</span>
+                                    </div>
+
+                                    <div class="prod-choose">
+                                        <img
+                                            src="./assets/img/pick-up.svg"
+                                            alt=""
+                                            class="prod-choose-img"
+                                        />
+                                        <span
+                                            >Miễn phí giao hàng, tối đa
+                                            44k</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <button class="btn-add-cart button btn-primary">
+                                Thêm vào giỏ hàng
+                            </button> -->
+
+                            <div class="prod-button">
+                                <button class="btn-add-cart button btn-primary">
+                                    <a href="/beaty-box-cosmetic/product-detail.html?id={{listProdDetail.id}}">Thêm vào giỏ hàng</a>
+                                </button>
+                                <button class="button btn-outline btn-mua">
+                                    Mua ngay
+                                </button>
+                                <button class="button btn-outline btn-heart">
+                                    <img src="./assets/img/heart.svg" alt="" />
+                                </button>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- Product content -->
+                <div class="product-content">
+                    <div class="prod-tab js-tabs">
+                        <ul class="prod-tab__list">
+                            <li class="prod-tab__item prod-tab__item--current">
+                                Mô tả
+                            </li>
+                            <li class="prod-tab__item">Đánh giá</li>
+                            <li class="prod-tab__item">Sản phẩm tương tự</li>
+                        </ul>
+                        <div class="prod-tab__contents">
+                            <div
+                                class="prod-tab__content prod-tab__content--current"
+                            >
+                                <div
+                                    class="text-content prod-tab__text-content"
+                                >
+                                    <p>{{listProdDetail.description}}</p>
+                                </div>
+                            </div>
+                            <div class="prod-tab__content">
+                                <div class="prod-content">
+                                    <h2 class="prod-content__heading">
+                                        Khách hàng của chúng tôi đang nhận xét
+                                        gì?
+                                    </h2>
+
+                                    <div class="row">
+                                        <div class="row-3">
+                                            <div class="user-review">
+                                                <div class="user-avatar">
+                                                    <img
+                                                        src="./assets/img/user.png"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                                <div class="user-info">
+                                                    <span class="user-name"
+                                                        >Jakir Hussen</span
+                                                    >
+                                                    <p class="review">
+                                                        Great product, I love
+                                                        this Coffee Beans
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="user-star-review">
+                                                <div class="user-star">
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                        class="star-img"
+                                                    />
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                        class="star-img"
+                                                    />
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                        class="star-img"
+                                                    />
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                        class="star-img"
+                                                    />
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                        class="star-img"
+                                                    />
+                                                </div>
+                                                <span>(3.5) Review</span>
+                                            </div>
+                                        </div>
+                                        <div class="row-3">
+                                            <div class="user-review">
+                                                <div class="user-avatar">
+                                                    <img
+                                                        src="./assets/img/user.png"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                                <div class="user-info">
+                                                    <span class="user-name"
+                                                        >Jakir Hussen</span
+                                                    >
+                                                    <p class="review">
+                                                        Great product, I love
+                                                        this Coffee Beans
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="user-star-review">
+                                                <div class="user-star">
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                        class="star-img"
+                                                    />
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                        class="star-img"
+                                                    />
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                        class="star-img"
+                                                    />
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                        class="star-img"
+                                                    />
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                        class="star-img"
+                                                    />
+                                                </div>
+                                                <span>(3.5) Review</span>
+                                            </div>
+                                        </div>
+                                        <div class="row-3">
+                                            <div class="user-review">
+                                                <div class="user-avatar">
+                                                    <img
+                                                        src="./assets/img/user.png"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                                <div class="user-info">
+                                                    <span class="user-name"
+                                                        >Jakir Hussen</span
+                                                    >
+                                                    <p class="review">
+                                                        Great product, I love
+                                                        this Coffee Beans
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="user-star-review">
+                                                <div class="user-star">
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                        class="star-img"
+                                                    />
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                        class="star-img"
+                                                    />
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                        class="star-img"
+                                                    />
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                        class="star-img"
+                                                    />
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                        class="star-img"
+                                                    />
+                                                </div>
+                                                <span>(3.5) Review</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prod-tab__content">
+                                <div class="prod-content">
+                                    <h2 class="prod-content__heading">
+                                        Sản phẩm tương tự
+                                    </h2>
+
+                                    <div class="row">
+                                        <div class="row-6">
+                                            <img
+                                                src="./assets/img/prod-1.svg"
+                                                alt=""
+                                                class="prod-img"
+                                            />
+                                            <h3 class="prod-name">
+                                                Tinh Chất Chống Lão Hóa AHC
+                                                Youth Focus Essence 30Ml
+                                            </h3>
+
+                                            <a href="#!" class="link">AHC</a>
+
+                                            <div class="price-star">
+                                                <span class="price"
+                                                    >350.000đ</span
+                                                >
+                                                <div class="star">
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                    />
+                                                    <span>3.5</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row-6">
+                                            <img
+                                                src="./assets/img/prod-1.svg"
+                                                alt=""
+                                                class="prod-img"
+                                            />
+                                            <h3 class="prod-name">
+                                                Tinh Chất Chống Lão Hóa AHC
+                                                Youth Focus Essence 30Ml
+                                            </h3>
+
+                                            <a href="#!" class="link">AHC</a>
+
+                                            <div class="price-star">
+                                                <span class="price"
+                                                    >350.000đ</span
+                                                >
+                                                <div class="star">
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                    />
+                                                    <span>3.5</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row-6">
+                                            <img
+                                                src="./assets/img/prod-1.svg"
+                                                alt=""
+                                                class="prod-img"
+                                            />
+                                            <h3 class="prod-name">
+                                                Tinh Chất Chống Lão Hóa AHC
+                                                Youth Focus Essence 30Ml
+                                            </h3>
+
+                                            <a href="#!" class="link">AHC</a>
+
+                                            <div class="price-star">
+                                                <span class="price"
+                                                    >350.000đ</span
+                                                >
+                                                <div class="star">
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                    />
+                                                    <span>3.5</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row-6">
+                                            <img
+                                                src="./assets/img/prod-1.svg"
+                                                alt=""
+                                                class="prod-img"
+                                            />
+                                            <h3 class="prod-name">
+                                                Tinh Chất Chống Lão Hóa AHC
+                                                Youth Focus Essence 30Ml
+                                            </h3>
+
+                                            <a href="#!" class="link">AHC</a>
+
+                                            <div class="price-star">
+                                                <span class="price"
+                                                    >350.000đ</span
+                                                >
+                                                <div class="star">
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                    />
+                                                    <span>3.5</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row-6">
+                                            <img
+                                                src="./assets/img/prod-1.svg"
+                                                alt=""
+                                                class="prod-img"
+                                            />
+                                            <h3 class="prod-name">
+                                                Tinh Chất Chống Lão Hóa AHC
+                                                Youth Focus Essence 30Ml
+                                            </h3>
+
+                                            <a href="#!" class="link">AHC</a>
+
+                                            <div class="price-star">
+                                                <span class="price"
+                                                    >350.000đ</span
+                                                >
+                                                <div class="star">
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                    />
+                                                    <span>3.5</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row-6">
+                                            <img
+                                                src="./assets/img/prod-1.svg"
+                                                alt=""
+                                                class="prod-img"
+                                            />
+                                            <h3 class="prod-name">
+                                                Tinh Chất Chống Lão Hóa AHC
+                                                Youth Focus Essence 30Ml
+                                            </h3>
+
+                                            <a href="#!" class="link">AHC</a>
+
+                                            <div class="price-star">
+                                                <span class="price"
+                                                    >350.000đ</span
+                                                >
+                                                <div class="star">
+                                                    <img
+                                                        src="./assets/img/star.svg"
+                                                        alt=""
+                                                    />
+                                                    <span>3.5</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer id="footer" class="footer"></footer>
+        <script>
+            load("#footer", "./template/footer.html");
+        </script>
+
+        <script src="./assets/js/pd.js"></script>
+        <!-- <script src="./assets/js/cart.js"></script> -->
+        <script src="./assets/angular/angular.min.js"></script>
+        <script src="./assets/angular/global.js"></script>
+        <script src="./assets/angular/prod-detail.js"></script>
+        <!-- <script src="./assets/angular/blog.js"></script> -->
+    </body>
+</html>

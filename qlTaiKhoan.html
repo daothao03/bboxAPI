@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Favicon -->
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="./assets/favicon/apple-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="./assets/favicon/apple-icon-60x60.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="72x72"
+            href="./assets/favicon/apple-icon-72x72.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="./assets/favicon/apple-icon-76x76.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="./assets/favicon/apple-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="./assets/favicon/apple-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="./assets/favicon/apple-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="./assets/favicon/apple-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/favicon/apple-icon-180x180.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="./assets/favicon/android-icon-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="./assets/favicon/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./assets/favicon/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta
+            name="msapplication-TileImage"
+            content="./assets/favicon/ms-icon-144x144.png"
+        />
+        <meta name="theme-color" content="#ffffff" />
+
+        <!-- RESET CSS -->
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+
+        <!-- Embed fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Fonts awesome -->
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <!-- CSS individual -->
+        <link rel="stylesheet" href="./assets/css/common.css" />
+        <link rel="stylesheet" href="./assets/css/form.css" />
+        <link rel="stylesheet" href="./assets/css/dialog.css" />
+        <link rel="stylesheet" href="./assets/css/admin.css" />
+
+        <title>Admin | BeautyBox</title>
+
+        <script>
+            const $ = document.querySelector.bind(document);
+            const $$ = document.querySelectorAll.bind(document);
+
+            function initJsToggle() {
+                $$(".js-toggle").forEach((button) => {
+                    const target = button.getAttribute("toggle-target");
+                    if (!target) {
+                        document.body.innerText = `Cần thêm toggle-target cho: ${button.outerHTML}`;
+                    }
+                    button.onclick = (e) => {
+                        e.preventDefault();
+
+                        if (!$(target)) {
+                            return (document.body.innerText = `Không tìm thấy phần tử "${target}"`);
+                        }
+                        const isHidden = $(target).classList.contains("hide");
+
+                        requestAnimationFrame(() => {
+                            $(target).classList.toggle("hide", !isHidden);
+                            $(target).classList.toggle("show", isHidden);
+                        });
+                    };
+                    document.onclick = function (e) {
+                        if (!e.target.closest(target)) {
+                            // const isHidden =
+                            //     $(target).classList.contains("hide");
+                            // if (!isHidden) {
+                            //     button.click();
+                            // }
+                        }
+                    };
+                });
+            }
+        </script>
+
+        <!-- <script src="./assets/js/tog-ad.js"></script> -->
+        <!-- <script src="./assets/js/tog-ad.js"></script> -->
+    </head>
+    <body ng-app="AppBanHang" ng-controller="TaiKhoanCtrl">
+        <main class="admin">
+            <div class="container">
+                <div class="logo">
+                    <div class="admin-logo">
+                        <img
+                            src="./assets/img/logo.png"
+                            alt=""
+                            class="admin-logo__img"
+                        />
+                    </div>
+                    <div class="admin-name">
+                        <a href="./frofile.html">ĐÀO THẢO</a>
+                    </div>
+                </div>
+
+                <div class="admin-content">
+                    <div class="row">
+
+                        <div class="col--8">
+                            <div class="manager">
+                                <!-- quản lý tài khoản -->
+                                <div class="manager-content">
+                                    <h2 class="heading">QUẢN LÝ TÀI KHOẢN</h2>
+                                    <div class="manager-ctrl">
+                                        <form action="./qlTaiKhoan.html" method="get" class="form">
+                                            <div class="form-group">
+                                                <div class="form-text-input">
+                                                    <input
+                                                        type="text"
+                                                        name="search"
+                                                        placeholder="Tìm kiếm"
+                                                        class="form-input"
+                                                    />
+
+                                                    <button type="submit" style="background-color: aqua;">
+                                                        <img
+                                                        src="./assets/img/search.svg"
+                                                        alt=""
+                                                        class="input-form-icon"
+                                                    />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <button
+                                            class="btn-create button btn-primary btn-rounded js-toggle"
+                                            toggle-target="#add-prod"
+                                        >
+                                            <a href="#!">
+                                                <img
+                                                    src="./assets/img/plus.svg"
+                                                    alt=""
+                                                />
+                                            Create</a>
+                                        </button>
+
+                                        <button
+                                            class="btn-create button btn-primary btn-rounded js-toggle"
+                                            toggle-target="#update-role"
+                                        >
+                                            <img
+                                                src="./assets/img/plus.svg"
+                                                alt=""
+                                            />
+                                            Update Role
+                                        </button>
+                                    </div>
+                                    <table class="table-manager__content">
+                                        <tr>
+                                            <th style="width: 30px">ID</th>
+                                            <th>Firstname</th>
+                                            <th>Lastname</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th
+                                                class="address"
+                                                style="width: 500px"
+                                            >
+                                                Address
+                                            </th>
+                                            <th>Role</th>
+                                            <th>CreatedAt</th>
+                                            <th class="actions">Actions</th>
+                                        </tr>
+                                        <tr ng-repeat="y in listUser">
+                                            <td>{{y.id}}</td>
+                                            <td>{{y.firstName}}</td>
+                                            <td>{{y.lastName}}</td>
+                                            <td>{{y.email}}</td>
+                                            <td>{{y.phone}}</td>
+                                            <td class="address">
+                                                {{y.address}}
+                                            </td>
+                                            <td>{{y.role}}</td>
+                                            <td>6/11/2023</td>
+                                            <td class="actions">
+                                                <button
+                                                    class="js-toggle"
+                                                    toggle-target="#update-profile"
+                                                >
+                                                    <img
+                                                        src="./assets/img/update.svg"
+                                                        alt=""
+                                                        class="actions-update"
+                                                    />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Thêm tài khoản / Đăng ký -> f-->
+        <div id="add-acc" class="dialog modal-small hide">
+            <div class="dialog__content">
+                <div class="modal-body">
+                    <h2 class="heading">Thêm tài khoản</h2>
+                    <form ng-submit="submitFormAddUser()" class="form" method="post" enctype="multipart/form-data">
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name="firstName"
+                                        placeholder="Firstname"
+                                        ng-model="formData.firstName"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name="lastName"
+                                        ng-model="formData.lastName"
+                                        placeholder="Lastname"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="Email"
+                                        ng-model="formData.email"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name="phone"
+                                        ng-model="formData.phone"
+                                        placeholder="Phone"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-text-input">
+                                <textarea
+                                    name="address"
+                                    id=""
+                                    ng-model="formData.address"
+                                    placeholder="Address"
+                                    cols="30"
+                                    rows="30"
+                                    class="form-input textarea-input"
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="password"
+                                        name="pPassword"
+                                        placeholder="Password"
+                                        ng-model="formData.password"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dialog__bottom">
+                            <button
+                                class="button btn-small btn-text dialog__btn js-toggle"
+                                toggle-target="#add-acc"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                class="button btn-small btn-primary dialog__btn "
+                                
+                                type="submit"
+                            >
+                                Confirm
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+
+            <div class="dialog__overlay"></div>
+        </div>
+
+        <!-- Sửa tài khoản / update profile-->
+        <div id="update-profile" class="dialog modal-small hide">
+            <div class="dialog__content">
+                <div class="modal-body">
+                    <h2 class="heading">Sửa tài khoản</h2>
+                    <form action="" class="form">
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name=""
+                                        placeholder="Firstname"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name=""
+                                        placeholder="Lastname"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="email"
+                                        name=""
+                                        placeholder="Email"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name=""
+                                        placeholder="Phone"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-text-input">
+                                <textarea
+                                    name=""
+                                    id=""
+                                    placeholder="Address"
+                                    cols="30"
+                                    rows="30"
+                                    class="form-input textarea-input"
+                                ></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="dialog__bottom">
+                    <button
+                        class="button btn-small btn-text dialog__btn js-toggle"
+                        toggle-target="#update-profile"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        class="button btn-small btn-primary dialog__btn js-toggle"
+                        toggle-target="#update-profile"
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
+
+            <div class="dialog__overlay"></div>
+        </div>
+
+        <!-- Sửa tài khoản / update quyền người dùng / Quản lý nhân viên-> f-->
+        <div id="update-role" class="dialog modal-small hide">
+            <div class="dialog__content">
+                <div class="modal-body">
+                    <h2 class="heading">Update quyền người dùng</h2>
+                    <form action="" class="form">
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name=""
+                                        placeholder="ID"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group f-g">
+                            <div class="f-g-1">
+                                <div class="form-text-input">
+                                    <input
+                                        type="text"
+                                        name=""
+                                        placeholder="client/admin"
+                                        id=""
+                                        class="form-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="dialog__bottom">
+                    <button
+                        class="button btn-small btn-text dialog__btn js-toggle"
+                        toggle-target="#update-role"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        class="button btn-small btn-primary dialog__btn js-toggle"
+                        toggle-target="#update-role"
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
+
+            <div class="dialog__overlay"></div>
+        </div>
+
+        <script src="./assets/js/admin.js"></script>
+        <script src="./assets/angular/angular.min.js"></script>
+        <script src="./assets/angular/global.js"></script>
+        <!-- <script src="./assets/angular/admin.js"></script> -->
+        <!-- <script src="./assets/angular/taikhoan.js"></script> -->
+        <!-- <script src="./assets/angular/addProduct.js"></script> -->
+    </body>
+</html>

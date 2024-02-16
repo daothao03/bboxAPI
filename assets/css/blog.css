@@ -1,0 +1,76 @@
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Nunito", sans-serif;
+}
+
+.blogs-page {
+    margin-top: 140px;
+}
+
+.blogs-content {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.blog-magazine {
+    width: calc(100% / 3);
+}
+
+.blog-magazine:hover img {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.blogs-content .blog-magazine {
+    margin-top: 20px;
+    width: 435px;
+    border-radius: 10px;
+}
+
+.blogs-content .blog-magazine img {
+    border-radius: 10px;
+    width: 98%;
+    height: 256px;
+    object-fit: cover;
+}
+
+.blog-magazine .title {
+    margin-top: 10px;
+    line-height: 1.25;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.blog-magazine .desc {
+    margin-top: 10px;
+    color: #a8a8a8;
+    --line-clamp: 3;
+    line-height: 1.25;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pagination .page-current {
+    /* width: 30px;
+    height: 30px; */
+    padding: 7px 10px;
+    border-radius: 50%;
+    border: 1px solid #000339;
+}

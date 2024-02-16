@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Favicon -->
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="./assets/favicon/apple-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="./assets/favicon/apple-icon-60x60.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="72x72"
+            href="./assets/favicon/apple-icon-72x72.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="./assets/favicon/apple-icon-76x76.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="./assets/favicon/apple-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="./assets/favicon/apple-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="./assets/favicon/apple-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="./assets/favicon/apple-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/favicon/apple-icon-180x180.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="./assets/favicon/android-icon-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="./assets/favicon/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./assets/favicon/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta
+            name="msapplication-TileImage"
+            content="./assets/favicon/ms-icon-144x144.png"
+        />
+        <meta name="theme-color" content="#ffffff" />
+
+        <!-- RESET CSS -->
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+
+        <!-- Embed fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Fonts awesome -->
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <!-- CSS individual -->
+        <link rel="stylesheet" href="./assets/css/header.css" />
+        <link rel="stylesheet" href="./assets/css/footer.css" />
+        <link rel="stylesheet" href="./assets/css/common.css" />
+        <link rel="stylesheet" href="./assets/css/form.css" />
+        <link rel="stylesheet" href="./assets/css/dialog.css" />
+        <link rel="stylesheet" href="./assets/css/breadcumbs.css" />
+        <link rel="stylesheet" href="./assets/css/checkout.css" />
+
+        <script src="./assets/js/scripts.js"></script>
+        <script src="./assets/js/toggle.js"></script>
+
+        <title>Shipping | BeautyBox</title>
+    </head>
+    <body>
+        <!-- Header -->
+        <header id="header" class="header"></header>
+        <script>
+            load("#header", "./template/header-login.html");
+        </script>
+
+        <main class="checkout-page">
+            <div class="content">
+                <!-- Breadcumbs -->
+                <div class="product-container">
+                    <!-- Breadcumbs -->
+                    <ul class="breadcumbs">
+                        <li class="breadcumbs-item">
+                            <a href="./index.html" class="breadcumbs-link">
+                                Trang chủ
+                                <img
+                                    src="./assets/img/crow-p.svg"
+                                    alt=""
+                                    class="breadcumbs-icon"
+                                />
+                            </a>
+                        </li>
+                        <li class="breadcumbs-item">
+                            <a href="./checkout.html" class="breadcumbs-link">
+                                Checkout
+                                <img
+                                    src="./assets/img/crow-p.svg"
+                                    alt=""
+                                    class="breadcumbs-icon"
+                                />
+                            </a>
+                        </li>
+                        <li class="breadcumbs-item">
+                            <a href="./shipping.html" class="breadcumbs-link">
+                                Shipping
+                                <img
+                                    src="./assets/img/crow-p.svg"
+                                    alt=""
+                                    class="breadcumbs-icon"
+                                />
+                            </a>
+                        </li>
+                        <li class="breadcumbs-item">
+                            <a
+                                href="#!"
+                                class="breadcumbs-link breadcumbs-link-current"
+                            >
+                                Payment
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Checkout content -->
+                <div class="product-container">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="cart-info cart-info__payment">
+                                <div class="cart-info_top">
+                                    <h1 class="cart-info__heading">
+                                        1. Shipping, arrives between Mon, May
+                                        16—Tue, May 24
+                                    </h1>
+
+                                    <div class="address-card__ctrl">
+                                        <a
+                                            href="./shipping.html"
+                                            class="address-card__ctrl-btn"
+                                        >
+                                            <img
+                                                src="./assets/img/edit.svg"
+                                                alt=""
+                                            />
+                                            Edit
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="cart-info__separate"></div>
+
+                                <!-- checkout address -->
+                                <div class="user-info">
+                                    <article class="user-info__address">
+                                        <h3 class="user-info__name">
+                                            Imran Khan
+                                        </h3>
+                                        <p class="user-info__address-detail">
+                                            Museum of Rajas, Sylhet Sadar,
+                                            Sylhet 3100.
+                                        </p>
+                                    </article>
+                                    <article class="user-info__cart">
+                                        <div class="user-info__cart-detail">
+                                            <h3 class="user-info__cart-heading">
+                                                Items details
+                                            </h3>
+                                            <p class="user-info__cart-qty">
+                                                2 items
+                                            </p>
+                                        </div>
+
+                                        <a
+                                            href="./shipping.html"
+                                            class="user-info__cart-link"
+                                            >View details</a
+                                        >
+                                    </article>
+                                </div>
+                            </div>
+
+                            <div class="cart-info cart-info__payment">
+                                <div class="cart-info_top">
+                                    <h1 class="cart-info__heading">
+                                        2. Shipping method
+                                    </h1>
+                                </div>
+                                <div class="cart-info__separate"></div>
+
+                                <h2 class="cart-info__payment-heading">
+                                    Availeble Shipping method
+                                </h2>
+
+                                <div class="user-info">
+                                    <article class="user-payment">
+                                        <div class="user-info__payment-desc">
+                                            <h3 class="user-info__name">
+                                                Thanh toán tiền mặt
+                                            </h3>
+                                            <p
+                                                class="user-info__address-detail"
+                                            >
+                                                Delivery: 2-3 days work
+                                            </p>
+                                        </div>
+
+                                        <div
+                                            class="address-card__choose address-card__choose-payment"
+                                        >
+                                            Free
+                                            <!-- Custom checkbox -->
+                                            <label
+                                                class="address-card__checkbox"
+                                            >
+                                                <input
+                                                    type="checkbox"
+                                                    name=""
+                                                    checked
+                                                    class="address-card__checkbox-input"
+                                                />
+                                            </label>
+                                        </div>
+                                    </article>
+
+                                    <article
+                                        class="user-payment user-payment-method"
+                                    >
+                                        <div class="user-info__payment-desc">
+                                            <h3 class="user-info__name">
+                                                Visa
+                                            </h3>
+                                            <p
+                                                class="user-info__address-detail"
+                                            >
+                                                Delivery: 2-3 days work
+                                            </p>
+                                        </div>
+
+                                        <div
+                                            class="address-card__choose address-card__choose-payment"
+                                        >
+                                            30.000đ
+                                            <!-- Custom checkbox -->
+                                            <label
+                                                class="address-card__checkbox"
+                                            >
+                                                <input
+                                                    type="checkbox"
+                                                    name=""
+                                                    class="address-card__checkbox-input"
+                                                />
+                                            </label>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="cart-info">
+                                <div class="cart-info-visa">
+                                    <h2 class="cart-info-visa__heading">
+                                        Payment Details
+                                    </h2>
+                                    <p class="cart-info-visa__desc">
+                                        Complete your purchase item by providing
+                                        your payment details order.
+                                    </p>
+
+                                    <form action="" class="form">
+                                        <div class="form-group form-group-2">
+                                            Email Address
+                                            <div class="form-text-input f-text">
+                                                <input
+                                                    type="text"
+                                                    name=""
+                                                    placeholder="example@gmail.com"
+                                                    id=""
+                                                    class="form-input"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-group-2">
+                                            Card Holder
+                                            <div class="form-text-input f-text">
+                                                <input
+                                                    type="text"
+                                                    name=""
+                                                    placeholder="example@gmail.com"
+                                                    id=""
+                                                    class="form-input"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-group-2">
+                                            Card Details
+                                            <div class="form-text-input f-text">
+                                                <input
+                                                    type="text"
+                                                    name=""
+                                                    placeholder="example@gmail.com"
+                                                    id=""
+                                                    class="form-input"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="form-group form-group-1 form-group-2"
+                                        >
+                                            <div
+                                                class="form-text-input form-text"
+                                            >
+                                                <input
+                                                    type="text"
+                                                    name=""
+                                                    placeholder="MM/YY"
+                                                    id=""
+                                                    class="form-input"
+                                                />
+                                            </div>
+
+                                            <div
+                                                class="form-text-input form-text"
+                                            >
+                                                <input
+                                                    type="text"
+                                                    name=""
+                                                    placeholder="CVC"
+                                                    id=""
+                                                    class="form-input"
+                                                />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="cart-info__row c-i-r">
+                                    <span>Subtotal (items) </span>
+                                    <span>3</span>
+                                </div>
+                                <div class="cart-info__row">
+                                    <span>Price (Total)</span>
+                                    <span>$191.65</span>
+                                </div>
+                                <div class="cart-info__row">
+                                    <span>Shipping</span>
+                                    <span>$10.00</span>
+                                </div>
+                                <div class="cart-info__separate"></div>
+                                <div class="cart-info__row cart-info__row-bold">
+                                    <span>Estimated Total</span>
+                                    <span>$201.65</span>
+                                </div>
+                                <button
+                                    class="btn-payment button btn-primary btn-rounded"
+                                >
+                                    Thanh toán $201.65
+                                </button>
+                            </div>
+                            <div class="cart-info">
+                                <div class="gift-item">
+                                    <div class="gift-item__icon-wrap">
+                                        <img
+                                            src="./assets/img/gift.svg"
+                                            alt=""
+                                            class="gift-item__icon"
+                                        />
+                                    </div>
+                                    <div class="gift-item__content">
+                                        <h3 class="gift-item__title">
+                                            Send this order as a gift.
+                                        </h3>
+                                        <p class="gift-item__desc">
+                                            Available items will be shipped to
+                                            your gift recipient.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer id="footer" class="footer"></footer>
+        <script>
+            load("#footer", "./template/footer.html");
+        </script>
+    </body>
+</html>

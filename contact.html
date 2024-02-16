@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Favicon -->
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="./assets/favicon/apple-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="./assets/favicon/apple-icon-60x60.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="72x72"
+            href="./assets/favicon/apple-icon-72x72.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="./assets/favicon/apple-icon-76x76.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="./assets/favicon/apple-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="./assets/favicon/apple-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="./assets/favicon/apple-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="./assets/favicon/apple-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/favicon/apple-icon-180x180.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="./assets/favicon/android-icon-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="./assets/favicon/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./assets/favicon/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta
+            name="msapplication-TileImage"
+            content="./assets/favicon/ms-icon-144x144.png"
+        />
+        <meta name="theme-color" content="#ffffff" />
+
+        <!-- RESET CSS -->
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+
+        <!-- Embed fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Fonts awesome -->
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <!-- CSS individual -->
+        <link rel="stylesheet" href="./assets/css/header.css" />
+        <link rel="stylesheet" href="./assets/css/footer.css" />
+        <link rel="stylesheet" href="./assets/css/common.css" />
+        <link rel="stylesheet" href="./assets/css/form.css" />
+        <link rel="stylesheet" href="./assets/css/contact.css" />
+
+        <script src="./assets/js/scripts.js"></script>
+        <script src="./assets/js/toggle.js"></script>
+
+        <title>Contact | BeautyBox</title>
+    </head>
+    <body ng-app="AppBanHang" ng-controller="ContactCtrl">
+        <!-- Header -->
+        <header id="header" class="header"></header>
+        <script>
+            load("#header", "./template/header-login.html");
+        </script>
+
+        <main class="contact-page">
+            <div class="content content-center">
+                <h2 class="contact__title">Lời nhắn của bạn</h2>
+                <form ng-submit="submitFormContact()" class="form" method="post">
+                    <div class="form-group">
+                        <div class="form-text-input">
+                            <input
+                                type="text"
+                                name="firstName"
+                                ng-model="formData.firstName"
+                                placeholder="Firstname"
+                                id="name"
+                                class="form-input"
+                            />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-text-input">
+                            <input
+                                type="text"
+                                name="lastName"
+                                ng-model="formData.lastName"
+                                placeholder="Lastname"
+                                id="name"
+                                class="form-input"
+                            />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-text-input">
+                            <input
+                                type="email"
+                                name="email"
+                                ng-model="formData.email"
+                                placeholder="Email"
+                                id="phone"
+                                class="form-input"
+                            />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-text-input">
+                            <input
+                                type="text"
+                                name="phone"
+                                ng-model="formData.phone"
+                                placeholder="+84"
+                                id="phone"
+                                class="form-input"
+                            />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-text-input">
+                            <select ng-model="formData.subjectID" name="subjectID" class="form-input form-i">
+                                <option ng-repeat="x in listSubjects" value="{{x.id}}">{{x.name}}</option>
+                                <!-- <option value="order">{{x.name}}</option> -->
+
+                                <!-- <option value="payment">Thanh toán</option>
+
+                                <option value="qty">
+                                    Đánh giá chất lượng dịch vụ
+                                </option> -->
+
+                                <!-- <option>Khác</option> -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <div class="form-text-input">
+                            <input
+                                type="text"
+                                name="iddh"
+                                placeholder="Mã hóa đơn hàng"
+                                id="iddh"
+                                class="form-input"
+                            />
+                        </div>
+                    </div> -->
+
+                    <div class="form-group">
+                        <div class="form-text-input form-text">
+                            <textarea
+                                name="message"
+                                id="message"
+                                ng-model="formData.message"
+                                cols="70"
+                                rows="9"
+                                class="form-input"
+                                placeholder="Message"
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-contact button btn-primary btn-rounded">
+                        GỬI NGAY
+                    </button>
+                </form>
+                <p class="note">
+                    Khi gửi thông tin, quý khách đồng ý cho phép chúng tôi liên
+                    lạc đến thông tin đã cung cấp.
+                </p>
+                <!-- <button type="submit" class="btn-contact button btn-primary btn-rounded">
+                    GỬI NGAY
+                </button> -->
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer id="footer" class="footer"></footer>
+        <script>
+            load("#footer", "./template/footer.html");
+        </script>
+
+        <script src="./assets/angular/angular.min.js"></script>
+        <script src="./assets/angular/global.js"></script>
+        <script src="./assets/angular/contact.js"></script>
+    </body>
+</html>

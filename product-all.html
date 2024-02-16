@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Favicon -->
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="./assets/favicon/apple-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="./assets/favicon/apple-icon-60x60.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="72x72"
+            href="./assets/favicon/apple-icon-72x72.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="./assets/favicon/apple-icon-76x76.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="./assets/favicon/apple-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="./assets/favicon/apple-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="./assets/favicon/apple-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="./assets/favicon/apple-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/favicon/apple-icon-180x180.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="./assets/favicon/android-icon-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="./assets/favicon/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./assets/favicon/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta
+            name="msapplication-TileImage"
+            content="./assets/favicon/ms-icon-144x144.png"
+        />
+        <meta name="theme-color" content="#ffffff" />
+
+        <!-- RESET CSS -->
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+
+        <!-- Embed fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Fonts awesome -->
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <!-- CSS individual -->
+        <link rel="stylesheet" href="./assets/css/header.css" />
+        <link rel="stylesheet" href="./assets/css/footer.css" />
+        <link rel="stylesheet" href="./assets/css/common.css" />
+        <link rel="stylesheet" href="./assets/css/form.css" />
+        <link rel="stylesheet" href="./assets/css/dialog.css" />
+        <link rel="stylesheet" href="./assets/css/breadcumbs.css" />
+        <link rel="stylesheet" href="./assets/css/product-all.css" />
+
+        <script src="./assets/js/scripts.js"></script>
+        <script src="./assets/js/toggle.js"></script>
+
+        <title>Product | BeautyBox</title>
+    </head>
+    <body>
+        <!-- Header -->
+        <header id="header" class="header"></header>
+        <script>
+            load("#header", "./template/header-login.html");
+        </script>
+
+        <main
+            class="product-all-page"
+            ng-controller="BlogCtrl"
+            ng-app="AppBanHang"
+        >
+            <div class="content">
+                <!-- Breadcumbs -->
+                <div class="product-container">
+                    <!-- Breadcumbs -->
+                    <ul class="breadcumbs">
+                        <li class="breadcumbs-item">
+                            <a href="./index.html" class="breadcumbs-link">
+                                Trang chủ
+                                <img
+                                    src="./assets/img/crow-p.svg"
+                                    alt=""
+                                    class="breadcumbs-icon"
+                                />
+                            </a>
+                        </li>
+                        <li class="breadcumbs-item">
+                            <a
+                                href="./product-detail.html"
+                                class="breadcumbs-link breadcumbs-link-current"
+                            >
+                                Trang điểm
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Content -->
+                <div class="content">
+                    <div class="product-all">
+                        <h1 class="product-all__title">TRANG ĐIỂM</h1>
+                        <div class="product-all_content">
+                            <div class="row">
+                                <div class="col-4">
+                                    <form action="" class="form form-tk">
+                                        <div class="form-group">
+                                            <div class="form-text-input">
+                                                <input
+                                                    type="text"
+                                                    name="search"
+                                                    placeholder="Tìm kiếm sản phẩm"
+                                                    id=""
+                                                    class="form-input"
+                                                />
+
+                                                <button class="search-btn">
+                                                    <img
+                                                        src="./assets/img/search.svg"
+                                                        alt=""
+                                                        class="input-form-icon"
+                                                    />
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="product-content__filter-left">
+                                        <h3
+                                            class="product-content__filter-price"
+                                        >
+                                            Gía sản phẩm
+                                        </h3>
+
+                                        <div class="product-filter__checkbox">
+                                            <div class="checkbox-custom">
+                                                <!-- Custom checkbox -->
+                                                <label
+                                                    class="product-content__filter__checkbox"
+                                                >
+                                                    <input
+                                                        type="checkbox"
+                                                        name=""
+                                                        class="product-content__filter__checkbox-input"
+                                                    />
+                                                </label>
+                                                <span>Dưới 500.000đ</span>
+                                            </div>
+                                            <div class="checkbox-custom">
+                                                <!-- Custom checkbox -->
+                                                <label
+                                                    class="product-content__filter__checkbox"
+                                                >
+                                                    <input
+                                                        type="checkbox"
+                                                        name=""
+                                                        class="product-content__filter__checkbox-input"
+                                                    />
+                                                </label>
+                                                <span
+                                                    >500.000₫ - 1.000.000₫</span
+                                                >
+                                            </div>
+                                            <div class="checkbox-custom">
+                                                <!-- Custom checkbox -->
+                                                <label
+                                                    class="product-content__filter__checkbox"
+                                                >
+                                                    <input
+                                                        type="checkbox"
+                                                        name=""
+                                                        class="product-content__filter__checkbox-input"
+                                                    />
+                                                </label>
+                                                <span
+                                                    >1.000.000₫ -
+                                                    1.500.000₫</span
+                                                >
+                                            </div>
+                                            <div class="checkbox-custom">
+                                                <!-- Custom checkbox -->
+                                                <label
+                                                    class="product-content__filter__checkbox"
+                                                >
+                                                    <input
+                                                        type="checkbox"
+                                                        name=""
+                                                        class="product-content__filter__checkbox-input"
+                                                    />
+                                                </label>
+                                                <span
+                                                    >1.500.000₫ -
+                                                    2.000.000₫</span
+                                                >
+                                            </div>
+                                            <div class="checkbox-custom">
+                                                <!-- Custom checkbox -->
+                                                <label
+                                                    class="product-content__filter__checkbox"
+                                                >
+                                                    <input
+                                                        type="checkbox"
+                                                        name=""
+                                                        class="product-content__filter__checkbox-input"
+                                                    />
+                                                </label>
+                                                <span>Trên 2.000.000₫</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="product-content__filter-left">
+                                        <h3
+                                            class="product-content__filter-price"
+                                        >
+                                            Loại sản phẩm
+                                        </h3>
+                                        <form action="" class="form form-tk">
+                                            <div class="form-group">
+                                                <div class="form-text-input">
+                                                    <input
+                                                        type="text"
+                                                        name=""
+                                                        placeholder="Tìm"
+                                                        id=""
+                                                        class="form-input"
+                                                    />
+
+                                                    <button class="search-btn">
+                                                        <img
+                                                            src="./assets/img/search.svg"
+                                                            alt=""
+                                                            class="input-form-icon"
+                                                        />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="product-content__filter-left">
+                                        <h3
+                                            class="product-content__filter-price"
+                                        >
+                                            Thương hiệu
+                                        </h3>
+
+                                        <form action="" class="form form-tk">
+                                            <div class="form-group">
+                                                <div class="form-text-input">
+                                                    <input
+                                                        type="text"
+                                                        name=""
+                                                        placeholder="Tìm"
+                                                        id=""
+                                                        class="form-input"
+                                                    />
+
+                                                    <button class="search-btn">
+                                                        <img
+                                                            src="./assets/img/search.svg"
+                                                            alt=""
+                                                            class="input-form-icon"
+                                                        />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div
+                                        
+                                        class="product-item"
+                                    >
+                                        <!-- Product item 1 -->
+                                        <div ng-repeat="x in timkiem" class="product-details__search">
+                                            <a href="./product-detail.html?id={{x.id}}"
+                                                ><img
+                                                    src="https://localhost:5001/images/productsImage/{{x.imageFileName}}"
+                                                    alt=""
+                                                    class="thumb"
+                                            /></a>
+                                            <div class="body">
+                                                <span class="name-company"
+                                                    >{{x.brand.name}}</span
+                                                >
+                                                <h3 class="title line-clamp">
+                                                    <!-- <a
+                                                        href="./product-detail.html"
+                                                        >1 Tinh Chất Dưỡng Sáng
+                                                        Da AHC Niacin Biome Mela
+                                                        Scissors Max Essence
+                                                        30ml</a
+                                                    > -->
+                                                    <a href="#!">{{x.name}}</a>
+                                                </h3>
+                                                <div class="price">
+                                                    <span class="price-dis"
+                                                        ><del
+                                                            >{{x.price}}vnd</del
+                                                        ></span
+                                                    >
+                                                    <div class="price-initial">
+                                                        <span
+                                                            >{{x.price}}vnd</span
+                                                        >
+                                                    </div>
+                                                </div>
+                                                <div class="star">
+                                                    <div class="star-validate">
+                                                        <i
+                                                            class="fa-solid fa-star"
+                                                        ></i>
+                                                        <i
+                                                            class="fa-solid fa-star"
+                                                        ></i>
+                                                        <i
+                                                            class="fa-solid fa-star"
+                                                        ></i>
+                                                        <i
+                                                            class="fa-solid fa-star"
+                                                        ></i>
+                                                        <i
+                                                            class="fa-solid fa-star"
+                                                        ></i>
+                                                    </div>
+                                                    <span>(10)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <ul class="pagination">
+                                        <!-- <li class="page-current">1</li>
+                                        <li>2</li>
+                                        <li>3</li>
+                                        <li>4</li>
+                                        <li>5</li>
+                                        <li>6</li>
+                                        <li>7</li>
+                                        <li>8</li>
+                                        <li>9</li>
+                                        <li>Next</li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer id="footer" class="footer"></footer>
+        <script>
+            load("#footer", "./template/footer.html");
+        </script>
+
+        <script src="./assets/js/pagination.js"></script>
+        <script src="./assets/angular/angular.min.js"></script>
+        <script src="./assets/angular/global.js"></script>
+        <script src="./assets/angular/prod-detail.js"></script>
+        <script src="./assets/angular/blog.js"></script>
+    </body>
+</html>

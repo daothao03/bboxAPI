@@ -1,0 +1,25 @@
+.breadcumbs {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 64px;
+    padding: 0 20px;
+    border-radius: 10px;
+    background: #f6f6f6;
+    box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
+}
+
+.breadcumbs-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #9e9da8;
+
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 150%; /* 150% */
+}
+
+.breadcumbs-link-current {
+    color: #000;
+}

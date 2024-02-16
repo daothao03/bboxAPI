@@ -1,0 +1,73 @@
+a,
+img,
+button,
+input,
+label,
+textarea,
+select {
+    /* padding: 0; */
+    font-family: inherit;
+    color: inherit;
+    outline: none;
+    border: none;
+}
+
+input,
+textarea {
+    background: transparent;
+}
+
+.form-group {
+    margin-top: 30px;
+}
+
+.form-group-inline {
+    display: flex;
+    align-items: center;
+}
+
+.form-text-input {
+    display: flex;
+    padding: 0 12px;
+    height: 50px;
+    align-items: center;
+    border-radius: 10px;
+    border: 1.5px solid #d2d1d6;
+}
+
+.form-text-input:focus-within {
+    border-color: #77dae6;
+}
+
+.form-input {
+    flex: 1;
+    height: 100%;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 144.444%;
+}
+
+.form-input::placeholder {
+    color: #d2d1d6;
+}
+
+.input-form-icon {
+    margin-left: 12px;
+}
+
+.form-pull-right {
+    margin-left: auto;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-checkbox-label {
+    color: #c1c0c3;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 146.667%;
+}

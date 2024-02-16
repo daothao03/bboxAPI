@@ -1,0 +1,205 @@
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Nunito", sans-serif;
+}
+
+.product-all-page {
+    margin-top: 140px;
+}
+
+.product-all__title {
+    margin-top: 20px;
+    color: #1a162e;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 141.667%;
+}
+
+.product-content__filter {
+    margin-top: 20px;
+    color: #1a162e;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 141.667%;
+}
+
+.product-content__filter-price {
+    margin-top: 30px;
+    color: #1a162e;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 141.667%;
+}
+
+.product-filter__checkbox {
+    margin-top: 10px;
+}
+
+.checkbox-custom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.product-content__filter__checkbox-input {
+    appearance: none;
+    color: #1a162e;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 150%;
+}
+
+.product-content__filter__checkbox-input::before {
+    content: url(../img/checkbox.svg);
+}
+
+.product-content__filter__checkbox-input:checked::before {
+    content: url(../img/checkbox-checked.svg);
+}
+
+.form-tk .form-text-input {
+    height: 40px;
+    width: 80%;
+}
+
+.product-item {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.ng-scope {
+    /* display: inline-block; */
+    /* flex-direction: column; */
+    /* display: none; */
+    /* display: flex;
+    gap: 10px;
+    flex-wrap: wrap; */
+}
+
+.product-details__search {
+    width: calc(100% / 4 - 10px);
+    margin-bottom: 20px;
+}
+
+.product-details__search .thumb {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.product-details__search:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.product-item .thumb {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.product-item .body {
+    padding: 17px 20px;
+}
+
+.product-item .name-company {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    color: #000339;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.5; /* 100% */
+}
+
+.product-item .name-company:hover {
+    text-decoration: underline;
+}
+
+.product-item .title a {
+    color: #000339;
+    font-size: 1.3rem;
+    text-align: center;
+    line-height: 1.5; /* 100% */
+}
+
+.product-item .title {
+    color: #a3a6ab;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    --line-clamp: 2;
+    word-break: break-all; /*xuống dòng nếu quá dài */
+}
+
+.price {
+    margin-top: 10px;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.star {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 1.3rem;
+}
+
+.star .star-validate {
+    margin-right: 15px;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.page-current {
+    /* width: 30px;
+    height: 30px; */
+    /* padding: 7px 10px; */
+    /* border-radius: 50%; */
+    /* border: 1px solid #000339;
+    background-color: var(--primary-color);
+    color: #fff; */
+}
+
+/* .pagination {
+    padding: 10px;
+    text-align: center;
+    list-style: none;
+} */
+.pagination li {
+    /* display: flex;
+    flex-direction: column; */
+    font-weight: 700;
+    /* background-color: var(--primary-color); */
+    padding: 10px;
+    display: inline-block;
+    /* margin: 0 10px; */
+    cursor: pointer;
+}
+/* .pagination .page-current {
+    background-color: #b192ef;
+    color: #fff;
+} */
+
+.form-text-input {
+    cursor: pointer;
+}

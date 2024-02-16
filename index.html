@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Favicon -->
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="./assets/favicon/apple-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="./assets/favicon/apple-icon-60x60.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="72x72"
+            href="./assets/favicon/apple-icon-72x72.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="./assets/favicon/apple-icon-76x76.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="./assets/favicon/apple-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="./assets/favicon/apple-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="./assets/favicon/apple-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="./assets/favicon/apple-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/favicon/apple-icon-180x180.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="./assets/favicon/android-icon-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="./assets/favicon/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./assets/favicon/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta
+            name="msapplication-TileImage"
+            content="./assets/favicon/ms-icon-144x144.png"
+        />
+        <meta name="theme-color" content="#ffffff" />
+
+        <!-- RESET CSS -->
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+
+        <!-- Embed fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Fonts awesome -->
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <!-- CSS individual -->
+        <link rel="stylesheet" href="./assets/css/header.css" />
+        <link rel="stylesheet" href="./assets/css/footer.css" />
+        <link rel="stylesheet" href="./assets/css/common.css" />
+        <link rel="stylesheet" href="./assets/css/styles.css" />
+
+        <script src="./assets/js/scripts.js"></script>
+
+        <title>Beauty Box | Mỹ phẩm, dưỡng da</title>
+    </head>
+    <body ng-controller="BlogCtrl" ng-app="AppBanHang">
+        <main>
+            <!-- Header -->
+            <!-- <header id="header" class="header"></header>
+            <script>
+                load("#header", "./template/header.html");
+            </script> -->
+
+            <header class="header">
+                <div class="discount-info">
+                    <div class="desc">100% chính hãng</div>
+                    <div class="separator"></div>
+                    <div class="desc">Giảm 120K cho đơn hàng từ 999K</div>
+                    <div class="separator"></div>
+                    <div class="desc">Gía tốt nhất</div>
+                    <div class="separator"></div>
+                    <div class="desc">Mua và nhận tại cửa hàng</div>
+                </div>
+            
+                <div class="content">
+                    <div class="store-info">
+                        <!-- Logo  -->
+                        <a href="./index.html"
+                            ><img src="./assets/img/logo.png" alt="" class="logo-img"
+                        /></a>
+            
+                        <!-- Find Input  -->
+                        <form action="/beaty-box-cosmetic/index.html" method="get">
+                            <div class="search">
+                                <button type="submit" style="cursor: pointer; width: 30px; height: 30px; background-color: aqua;" class="btn">
+                                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                                    <!-- SEARCH -->
+                                </button>
+                
+                                <input
+                                    class="input-find"
+                                    type="text"
+                                    name="search"
+                                    placeholder="Freeship cho đơn từ 155K"
+                                />
+                            </div>
+                        </form>
+            
+                        <div class="menu-section menu">
+                            <a href="./sign-in.html" class="link">
+                                <img
+                                    src="./assets/img/user-login.png"
+                                    alt=""
+                                    class="icon-img"
+                                />
+                                <span>Đăng nhập</span>
+                            </a>
+                            <a href="#!" class="link">
+                                <img
+                                    src="./assets/img/heart-3.png"
+                                    alt=""
+                                    class="icon-img"
+                                />
+                            </a>
+                            <a href="#!" class="link">
+                                <img
+                                    src="./assets/img/cart-3.png"
+                                    alt=""
+                                    class="icon-img"
+                                />
+                            </a>
+                        </div>
+                    </div>
+            
+                    <!-- Navbar  -->
+                    <nav class="navbar">
+                        <ul class="menu-item">
+                            <li class="sub-menu">
+                                <a href="#!" class="menu-link">Thương hiệu</a>
+            
+                                <div class="mega-menu">
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">TẤT CẢ THƯƠNG HIỆU</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">A'pieu</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">AHC</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Beauty Box</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Banila Co</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Cosrx</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Club Clio</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Dear Dahlia</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Dermatory</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Peripera</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">THE FACE SHOP</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Goodal</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Skinfood</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <img
+                                            src="./assets/img/famous-brand-2.webp"
+                                            alt=""
+                                        />
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <img
+                                            src="./assets/img/famous-brand-2.webp"
+                                            alt=""
+                                        />
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <img
+                                            src="./assets/img/famous-brand-3.webp"
+                                            alt=""
+                                        />
+                                    </div>
+                                </div>
+                            </li>
+            
+                            <li class="sub-menu">
+                                <a href="#!" class="menu-link">Khuyến mại hot </a>
+            
+                                <div class="mega-menu">
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">KHUYẾN MÃI HOT</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!"
+                                                    >LÀM ĐẸP TỐI GIẢN | ƯU ĐÃI ĐẾN 50%</a
+                                                >
+                                            </li>
+                                            <li>
+                                                <a href="#!"
+                                                    >TRANG ĐIỂM NHẸ NHÀNG, CHUẨN LÌ LÂU
+                                                    TRÔI</a
+                                                >
+                                            </li>
+                                            <li>
+                                                <a href="#!"
+                                                    >RINH DEAL SIÊU TIẾT KIỆM ĐẾN 50%</a
+                                                >
+                                            </li>
+                                        </ul>
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <img src="./assets/img/discount-1.webp" alt="" />
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <img src="./assets/img/discount-2.webp" alt="" />
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <img src="./assets/img/discount-3.webp" alt="" />
+                                    </div>
+                                </div>
+                            </li>
+            
+                            <li class="sub-menu">
+                                <a href="#!" class="menu-link">Sản phẩm mới</a>
+                            </li>
+            
+                            <li class="sub-menu">
+                                <a href="#!" class="menu-link">Trang điểm</a>
+            
+                                <div class="mega-menu">
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">TRANG ĐIỂM MẶT</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">Kem nền</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Kem lót</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Che khuyết điểm</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Phấn má hồng</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Phấn nước cushion</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Phấn phủ</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">TRANG ĐIỂM MÔI</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">Son thỏi</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Son kem</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Son tint</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Son bóng</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">TRANG ĐIỂM MẮT</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">Mascara</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Kẻ chân mày</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Phấn mắt</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">PHỤ KIỆN TRANG ĐIỂM</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">Cọ trang điểm</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Mút trang điểm</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Bông cotton</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Phụ kiện trang điểm khác</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+            
+                            <li class="sub-menu">
+                                <a href="#!" class="menu-link">Dưỡng da</a>
+            
+                                <div class="mega-menu">
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">DƯỠNG DA MẶT</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">Nước cân bằng</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Xịt khoáng</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Sữa dưỡng</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Tinh chất dưỡng</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Kem dưỡng mắt</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Kem dưỡng da mặt</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Bộ chăm sóc da</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">Làm sạch</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">Sữa rửa mặt</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Tẩy trang da mặt</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Tẩy trang mắt và môi</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Tẩy tế bào chết da mặt</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Phụ kiện làm sạch</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">MẶT NẠ</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">Mặt nạ giấy</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Mặt nạn dưỡng</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Mặt nạ mắt</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Mặt nạ môi</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Mặt nạ ngủ</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Mặt nạ tay chân</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <img src="./assets/img/routine.webp" alt="" />
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">CHỐNG NẮNG</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">Serum/ Kem chống nắng</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Xịt chống nắng</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Sáp chống nắng</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Sữa/ Gel chống nắng</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">DƯỠNG DA DÀNH CHO NAM</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">Dưỡng da mặt dành cho nam</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!"
+                                                    >Sản phẩm làm sạch dành cho nam</a
+                                                >
+                                            </li>
+                                        </ul>
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">PHỤ KIỆN CHĂM SÓC DA</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">Giấy thấm dầu</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Bông cotton</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!"
+                                                    >Miếng dán mụn/ miếng lột mụn đầu đen</a
+                                                >
+                                            </li>
+                                            <li>
+                                                <a href="#!">Dụng cụ chăm sóc da mặt</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+            
+                            <li class="sub-menu">
+                                <a href="#!" class="menu-link">Chăm sóc cá nhân</a>
+            
+                                <div class="mega-menu">
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">CHĂM SÓC SỨC KHỎE</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">Khẩu trang y tế</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Thực phẩm chức năng</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Nước/ Gel rửa tay</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">NƯỚC HOA</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">Nước hoa</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Xịt thơm toàn thân</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">CHĂM SÓC RĂNG MIỆNG</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">Kem đánh răng</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Bàn chải đánh răng</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Sản phẩm răng miệng khác</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <img
+                                            src="./assets/img/cham-soc-ca-nhan.webp"
+                                            alt=""
+                                        />
+                                    </div>
+                                </div>
+                            </li>
+            
+                            <li class="sub-menu">
+                                <a href="#!" class="menu-link">Chăm sóc cơ thể</a>
+            
+                                <div class="mega-menu">
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">CHĂM SÓC TOÀN THÂN</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">Sữa/ Gel tắm</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Dưỡng thể</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Làm sạch tế bào chết cơ thể</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Kem dưỡng tay/ chân</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Lâu khử mùi</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Dụng cụ chăm sóc cơ thể</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+            
+                                    <div class="mega-item">
+                                        <h2 class="title-menu-item">
+                                            <a href="#!">CHĂM SÓC TÓC</a>
+                                        </h2>
+            
+                                        <div class="separate"></div>
+            
+                                        <ul class="list-mega">
+                                            <li>
+                                                <a href="#!">Dầu gội</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Dầu xả</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Sản phẩm dưỡng tóc</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Sản phẩm tạo nếp tóc</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Sản phẩm nhuộm tóc</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!">Dụng cụ cho tóc</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+            
+                                    <div class="mega-item"></div>
+            
+                                    <div class="mega-item">
+                                        <img
+                                            src="./assets/img/cham-soc-co-the.webp"
+                                            alt=""
+                                        />
+                                    </div>
+                                </div>
+                            </li>
+            
+                            <li class="sub-menu">
+                                <a href="#!" class="menu-link">Nhận mã ưu đãi</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+            <!-- Slideshow -->
+            <section class="desc-discount">
+                <div class="content">
+                    <div class="slide-container">
+                        <div class="slide" >
+                            <a href="#!"
+                                ><img
+                                    class="img-slide"
+                                    src="./assets/img/slide-1-1-1.webp"
+                                    alt=""
+                            /></a>
+                            <a href="#!"
+                                ><img
+                                    class="img-slide"
+                                    src="./assets/img/slide-1.webp"
+                                    alt=""
+                            /></a>
+                            <a href="#!"
+                                ><img
+                                    class="img-slide"
+                                    src="./assets/img/slide-4.webp"
+                                    alt=""
+                            /></a>
+                        </div>
+                    </div>
+
+                    <div class="discount-img">
+                        <div class="img-dis">
+                            <figure>
+                                <a href="#!"
+                                    ><img src="./assets/img/dis-1.webp" alt=""
+                                /></a>
+                            </figure>
+                        </div>
+                        <div class="img-dis">
+                            <figure>
+                                <a href="#!"
+                                    ><img src="./assets/img/dis-2.webp" alt=""
+                                /></a>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sản phẩm mới -->
+            <div class="content">
+                <div class="product-all ">
+                    <h2 class="sub-title">SẢN PHẨM MỚI</h2>
+                    <div class="product-all_content">
+
+                                <div class="product-item new-prod"  >
+
+                                    <!-- Product item 2 -->
+                                    <div ng-repeat="x in listSPMoi" class="product-details__search">
+                                        <a href="./product-detail.html?id={{x.id}}"
+                                            ><img
+                                            src="https://localhost:5001/images/productsImage/{{x.imageFileName}}"
+                                            alt=""
+                                            class="thumb"
+                                    /></a>
+                                        <div class="body">
+                                            <span class="name-company"
+                                                >{{x.brand.name}}</span
+                                            >
+                                            <h3 class="title line-clamp">
+                                                
+                                                    <a href="./product-detail.html?id={{x.id}}">{{x.name}}</a
+                                                >
+                                            </h3>
+                                            <div class="price">
+                                                <span class="price-dis"
+                                                    >{{x.price}}đ</span
+                                                >
+                                                <div class="price-initial">
+                                                    <span>1.445.000đ</span>
+                                                </div>
+                                            </div>
+                                            <div class="star">
+                                                <div class="star-validate">
+                                                    <i
+                                                        class="fa-solid fa-star"
+                                                    ></i>
+                                                    <i
+                                                        class="fa-solid fa-star"
+                                                    ></i>
+                                                    <i
+                                                        class="fa-solid fa-star"
+                                                    ></i>
+                                                    <i
+                                                        class="fa-solid fa-star"
+                                                    ></i>
+                                                    <i
+                                                        class="fa-solid fa-star"
+                                                    ></i>
+                                                </div>
+                                                <span>(10)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+                                </div>
+
+                                <ul class="pagination">
+                                    <!-- <li class="page-current">1</li>
+                                    <li>2</li>
+                                    <li>3</li>
+                                    <li>4</li>
+                                    <li>5</li>
+                                    <li>6</li>
+                                    <li>7</li>
+                                    <li>8</li>
+                                    <li>9</li>
+                                    <li>Next</li> -->
+                                </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top sản phẩm bán chạy -->
+            <section class="flashsale top-product">
+                <div class="content">
+                    <div class="sale-pn">
+                        <h2 class="sub-title">TOP SẢN PHẨM BÁN CHẠY</h2>
+
+                        <div class="top-pro">
+                            <i
+                                id="left"
+                                class="fa-solid fa-angle-left arrow"
+                            ></i>
+
+                            <div class="sale-product">
+                                <!-- Product 1 -->
+                                <div ng-repeat="x in listBanChay" 
+                                    class="product-item"
+                                    
+                                >
+                                    <!-- <a href="#!"
+                                        ><img
+                                            src="./assets/img/pro-1.webp"
+                                            alt=""
+                                            class="thumb"
+                                    /></a> -->
+                                    <a href="./product-detail.html?id={{x.id}}"
+                                            ><img
+                                            src="https://localhost:5001/images/productsImage/{{x.imageFileName}}"
+                                            alt=""
+                                            class="thumb"
+                                    /></a>
+                                    <div class="body">
+                                        <span class="name-company">AHC</span>
+                                        <h3 class="title line-clamp">
+                                            <a href="./product-detail.html?id={{x.id}}">{{x.name}}</a>
+                                        </h3>
+                                        <div class="price">
+                                            <span class="price-dis"
+                                                >{{x.price}}đ</span
+                                            >
+                                            <div class="price-initial">
+                                                <span>1.445.000đ</span>
+                                                <span class="tag-price-dis">
+                                                    42%
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="star">
+                                            <div class="star-validate">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                            <span>(10)</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                
+                            </div>
+
+                            <i class="fa-solid fa-angle-right arrow"></i>
+                        </div>
+
+                        <div class="btn-see">
+                            <a href="./product-all.html" class="btn"
+                                >Xem tất cả</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Product-all -->
+            <div class="content">
+                <div class="product-all">
+                    <h2 class="sub-title">TẤT CẢ SẢN PHẨM</h2>
+                    <div class="product-all_content">
+
+                                <div class="product-item" >
+
+                                    <!-- Product item 2 -->
+                                    <div ng-repeat="x in timkiem" class="product-details__search">
+                                        <a href="./product-detail.html?id={{x.id}}"
+                                            ><img
+                                            src="https://localhost:5001/images/productsImage/{{x.imageFileName}}"
+                                            alt=""
+                                            class="thumb"
+                                    /></a>
+                                        <div class="body">
+                                            <span class="name-company"
+                                                >{{x.brand.name}}</span
+                                            >
+                                            <h3 class="title line-clamp">
+                                                
+                                                    <a href="./product-detail.html?id={{x.id}}">{{x.name}}</a
+                                                >
+                                            </h3>
+                                            <div class="price">
+                                                <span class="price-dis"
+                                                    >{{x.price}}đ</span
+                                                >
+                                                <div class="price-initial">
+                                                    <span>1.445.000đ</span>
+                                                </div>
+                                            </div>
+                                            <div class="star">
+                                                <div class="star-validate">
+                                                    <i
+                                                        class="fa-solid fa-star"
+                                                    ></i>
+                                                    <i
+                                                        class="fa-solid fa-star"
+                                                    ></i>
+                                                    <i
+                                                        class="fa-solid fa-star"
+                                                    ></i>
+                                                    <i
+                                                        class="fa-solid fa-star"
+                                                    ></i>
+                                                    <i
+                                                        class="fa-solid fa-star"
+                                                    ></i>
+                                                </div>
+                                                <span>(10)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+                                </div>
+
+                                <ul class="pagination">
+                                    <!-- <li class="page-current">1</li>
+                                    <li>2</li>
+                                    <li>3</li>
+                                    <li>4</li>
+                                    <li>5</li>
+                                    <li>6</li>
+                                    <li>7</li>
+                                    <li>8</li>
+                                    <li>9</li>
+                                    <li>Next</li> -->
+                                </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog -->
+            <section class="blog">
+                <div class="content">
+                    <h2 class="sub-title">BEAUTYBOX MAGAZINE</h2>
+                    <!-- <div class="tabs">
+                        <div class="tab-items actions">Tin tức - Deal hot</div>
+                        <div class="tab-items">Góc review</div>
+                        <div class="tab-items">Cách chăm sóc da</div>
+                        <div class="tab-items">Bí kíp khỏe đẹp</div>
+                        <div class="tab-items">Xu hướng trang điểm</div>
+                    </div> -->
+
+                    <!-- Tab tin tức -->
+                    <div class="magazine actions">
+                        <div class="bl-mg" ng-repeat="x in listBlog">
+                            <!-- Blog 1 -->
+                            <div class="blog-magazine">
+                                <a href="./blog-detail.html">
+                                    <!-- <img
+                                        src="./assets/img/blog-tab1-3.webp"
+                                        alt=""
+                                        class="blog-img"
+                                    />   -->
+                                    <img
+                                    src="https://localhost:5001/images/blogsImage/{{x.imageFileName}}"
+                                    alt=""
+                                    class="blog-img"
+                            />
+                                </a>
+                                <h3 class="title line-clamp">
+                                    <a href="./blog-detail.html"
+                                        >{{x.title}}</a
+                                    >
+                                </h3>
+                                <p class="desc line-clamp">
+                                    {{x.content}} 
+                                </p>
+                            </div>
+                            <!-- Blog 2 -->
+                            <!-- <div class="blog-magazine">
+                                <a href="./blog-detail.html"
+                                    ><img
+                                        src="./assets/img/blog-tab1-2.webp"
+                                        alt=""
+                                        class="blog-img"
+                                /></a>
+                                <h3 class="title line-clamp">
+                                    <a href="./blog-detail.html"
+                                        >Đăng Ký Thành Viên Beauty Box Nhận
+                                        Voucher 500K</a
+                                    >
+                                </h3>
+                                <p class="desc line-clamp">
+                                    Chào đón tháng 9, đón thu sang rạng rỡ với
+                                    Beauty Box - thương hiệu chăm sóc da uy tín,
+                                    chất lượng và chính hãng! Bạn đã sẵn sàng
+                                    khám phá những ưu đãi hấp dẫn với chương
+                                    trình "Đăng ký thành viên - Nhận ngay
+                                    Voucher 500K"? Hãy cùng Beauty Box tận hưởng
+                                    những trải nghiệm mua sắm tuyệt vời và nhận
+                                    những ưu đãi đặc biệt khi trở thành thành
+                                    viên của Beauty Box. Với việc trở thành
+                                    thành viên Beauty Box, bạn sẽ được hưởng
+                                    giảm giá cho các đơn hàng, nhận quà tặng và
+                                    mẫu thử miễn phí, cùng với những thông báo
+                                    sớm về các chương trình khuyến mãi và sự
+                                    kiện đặc biệt. Đừng bỏ lỡ cơ hội tận hưởng
+                                    làn da rạng rỡ và tự tin mỗi ngày. Đăng ký
+                                    thành viên ngay tại Beauty Box để thỏa mãn
+                                    đam mê làm đẹp và nhận những ưu đãi đặc biệt
+                                    đang chờ đón bạn!
+                                </p>
+                            </div> -->
+                            <!-- Blog 3 -->
+                            <!-- <div class="blog-magazine">
+                                <a href="./blog-detail.html"
+                                    ><img
+                                        src="./assets/img/blog-tab1-3.webp"
+                                        alt=""
+                                        class="blog-img"
+                                /></a>
+                                <h3 class="title line-clamp">
+                                    <a href="./blog-detail.html"
+                                        >Có Gì Đặc Biệt Ở Dòng Son Mới Blur
+                                        Matte Lipstick Của 3CE?</a
+                                    >
+                                </h3>
+                                <p class="desc line-clamp">
+                                    Qua một khoảng thời gian “làm mưa làm gió”
+                                    tại thị trường Hàn Quốc, mới đây, thương
+                                    hiệu mỹ phẩm 3CE hợp tác cùng Beauty Box
+                                    Việt Nam đã có màn “chào sân” bộ sưu tập
+                                    dòng son mới mang tên 3CE Blur Matte
+                                    Lipstick. Đặc biệt, sự kiện còn có quy tụ
+                                    các nghệ sĩ nổi tiếng như Hari Won, Thiều
+                                    Bảo Trâm, Han Sara, Cara, cùng dàn hot
+                                    tiktoker chuyên về làm đẹp.
+                                </p>
+                            </div> -->
+                        </div>
+                        
+                    </div>
+
+                    <div class="btn-see">
+                        <a href="./blog.html" class="btn">Xem tất cả</a>
+                    </div>
+
+                   
+                </div>
+            </section>
+
+            <!-- footer -->
+            <footer id="footer" class="footer"></footer>
+            <script>
+                load("#footer", "./template/footer.html");
+            </script>
+        </main>
+
+        <!-- Scripts -->
+        <script src="./assets/js/countdown.js"></script>
+        <script src="./assets/js/product-slide.js"></script>
+        <script src="./assets/js/page.js"></script>
+        <script src="./assets/js/blog.js"></script>
+        <script src="./assets/js/brand.js"></script>
+        <!-- <script src="./assets/js/scripts.js"></script> -->
+        <script src="./assets/js/slide.js"></script>
+        <script src="./assets/angular/angular.min.js"></script>
+        <script src="./assets/angular/global.js"></script>
+        <script src="./assets/angular/home.js"></script>
+        <script src="./assets/angular/blog.js"></script>
+        <!-- <script src="./assets/angular/prod-detail.js"></script> -->
+    </body>
+</html>

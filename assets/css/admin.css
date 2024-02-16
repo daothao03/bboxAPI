@@ -1,0 +1,269 @@
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-image: radial-gradient( circle 311px at 8.6% 27.9%,  rgba(62,147,252,0.57) 12.9%, rgba(239,183,192,0.44) 91.2% );
+    font-size: 1.6rem;
+    font-family: "Nunito", sans-serif;
+}
+.admin-logo {
+    display: flex;
+    margin-left: 30px;
+}
+.admin-logo h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 2.2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin: 15px;
+}
+
+.container {
+    width: 1500px;
+    max-width: calc(100% - 48px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.admin-logo {
+    flex: 1;
+    width: 150px;
+    object-fit: contain;
+}
+
+.admin-name {
+    color: #1a162e;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 145.455%;
+    border-radius: 999px;
+    border: 2px solid var(--primary-color);
+    padding: 4px 20px;
+}
+
+.col--4 {
+    width: 20%;
+}
+
+.col--8 {
+    width: 100%;
+}
+
+.heading {
+    color: #1a162e;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 145.455%;
+}
+
+.list-manager .manager-item {
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.list-manager__item {
+    margin-left: 15px;
+    /* border-left: 3px solid #ccc; */
+    display: none;
+}
+
+.list-manager__item li {
+    /* display: inline-block; */
+    padding: 20px 20px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.manager-item:hover .list-manager__item {
+    display: block;
+}
+
+.manager-item__link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+th,
+td {
+    border: 1px solid #000;
+}
+
+.table-manager__content th,
+.table-manager__content td {
+    text-align: center;
+    padding: 3px 10px;
+    line-height: 146%;
+    font-size: 1.5rem;
+}
+
+.table-manager__content {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.table-manager__content th {
+    font-weight: 700;
+}
+
+.table-manager__content tr:nth-child(even) {
+    background: #fbe3e1;
+}
+
+.actions-delete,
+.actions-update {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.manager-ctrl {
+    display: flex;
+    align-items: center;
+}
+
+.form-text-input {
+    width: 400px;
+    height: 40px;
+    border-radius: 999px;
+    flex: 1;
+}
+
+.btn-create {
+    cursor: pointer;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-bottom: 0;
+}
+
+.manager-content {
+    display: none;
+}
+
+.manager-content-current {
+    display: block;
+}
+
+.input-form-icon {
+    cursor: pointer;
+}
+
+.input-date {
+    font-size: 1.8rem;
+    padding: 4px 20px;
+    border-radius: 999px;
+    border: 2px solid var(--primary-color);
+}
+
+.statistical {
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.statis {
+    padding: 20px;
+    /* background-image: url(https://png.pngtree.com/element_our/png_detail/20181226/bar-chart-vector-icon-png_277411.jpg);
+    background-size: 90% 100%; */
+    height: 150px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    width: calc(100% / 3 - 30px);
+}
+
+.statis-dthu {
+    background-image: linear-gradient(
+        184.1deg,
+        rgba(249, 255, 182, 1) 44.7%,
+        rgba(226, 255, 172, 1) 67.2%
+    );
+}
+
+.statis-hd {
+    background-image: radial-gradient(
+        circle farthest-corner at -14.3% -17.5%,
+        rgba(245, 168, 168, 1) 4%,
+        rgba(164, 168, 248, 1) 100.2%
+    );
+}
+
+.statis-client {
+    background-image: radial-gradient(
+        circle 311px at 8.6% 27.9%,
+        rgba(62, 147, 252, 0.57) 12.9%,
+        rgba(239, 183, 192, 0.44) 91.2%
+    );
+}
+
+.statis-user {
+    background-image: radial-gradient(
+        circle farthest-corner at 10% 20%,
+        rgba(176, 229, 208, 1) 42%,
+        rgba(92, 202, 238, 0.41) 93.6%
+    );
+}
+
+.statis-prod {
+    background-image: linear-gradient(
+        109.6deg,
+        rgba(61, 131, 97, 1) 11.2%,
+        rgba(28, 103, 88, 1) 91.1%
+    );
+}
+
+.qty-statis {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 142.857%;
+}
+
+.qty-statis .qty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    align-items: center;
+    display: flex;
+    gap: 7px;
+}
+
+.manager-items-current {
+    color: var(--primary-color);
+}
+
+/* .dialog.hide {
+    opacity: 0;
+    visibility: hidden;
+} */
+
+.heading-satis {
+    margin-bottom: 20px;
+}
+
+.f-g-1 span {
+    display: flex;
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.table-manager__content .img {
+    width: 60px;
+    height: 60px;
+}
